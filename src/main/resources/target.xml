@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformations xmlns="http://www.ETL.in">
+    <transformationSource>
+        <table>source_data_dump</table>
+        <data_column>Data</data_column>
+    </transformationSource>
+
+    <transformation>
+        <type>json</type>
+        <URL>url_to_loc</URL>
+        <transformation1>xtransformation1.class/function</transformation1>
+        <transformation2>xtransformation2.class/function</transformation2>
+        <transformation3>xtransformation3.class/function</transformation3>
+        <transformation4>xtransformation4.class/function</transformation4>
+    </transformation>
+
+    <transformation>
+        <type>csv</type>
+        <URL>url_to_loc</URL>
+        <transformation1>ytransformation1.class/function</transformation1>
+        <transformation2>ytransformation2.class/function</transformation2>
+        <transformation3>ytransformation3.class/function</transformation3>
+        <transformation4>ytransformation4.class/function</transformation4>
+    </transformation>
+
+    <transformationTarget>
+        <table>foreign_exchange</table>
+        <column1>transformation1-res</column1>
+        <column2>transformation2-res</column2>
+        <column3>transformation3-res</column3>
+        <column4>transformation4-res</column4>
+        <column5>Date_Time</column5>
+        <store_class>store_in_table.class/function</store_class>
+    </transformationTarget>
+</transformations>
+
