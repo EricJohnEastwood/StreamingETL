@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sources xmlns="http://www.ETL.in">
+    <source>
+        <URL>url_to_loc</URL>
+        <type>json</type>
+        <queryFrequency> </queryFrequency>
+    </source>
+
+    <source>
+        <URL>url_to_loc</URL>
+        <type>csv</type>
+        <queryFrequency> </queryFrequency>
+    </source>
+
+    <sourceTarget>
+        <table>source_data_dump</table>
+        <column1>type</column1>
+        <column2>URL</column2>
+        <column3>Date_Time</column3>
+        <data_request>get_data_from_URL.class/function</data_request>
+        <column4>data_request</column4>
+        <store_class>store_in_table.class/function</store_class>
+    </sourceTarget>
+</sources>
