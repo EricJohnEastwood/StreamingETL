@@ -4,7 +4,7 @@ public class TargetTable {
     private String tableName;
     private ArrayList<String> columnName;
     private String storeDataModule;
-    private boolean tableInitialized; // true  init, false not int
+    private boolean tableInitialized; // true  initialized, false not initialized
     private boolean columnInitialized;
 
 
