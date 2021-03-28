@@ -14,11 +14,11 @@
 
     <sourceTarget>
         <table>source_data_dump</table>
-        <column1>type</column1>
-        <column2>URL</column2>
-        <column3>Date_Time</column3>
+        <column>type</column>
+        <column>URL</column>
+        <column>Date_Time</column>
         <data_request>get_data_from_URL.class/function</data_request>
-        <column4>data_request</column4>
+        <column>data_request</column>
         <store_class>store_in_table.class/function</store_class>
     </sourceTarget>
 </sources>
