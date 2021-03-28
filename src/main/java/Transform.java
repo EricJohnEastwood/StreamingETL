@@ -2,6 +2,7 @@ import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 import javax.xml.parsers.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.sql.*;
 
@@ -59,31 +60,40 @@ public class Transform {
     }
 
 
-    public static void get_source_db(String filename) {
+    public static void get_source_table(String filename) {
         try{
+            String tableName;
+            ArrayList<String> columnName = new ArrayList<String>();
+
             DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
             DocumentBuilder builder=factory.newDocumentBuilder();
-            Document document=builder.parse(new File("./src/main/resources/" + filename));
-            // document.getDocumentElement().normalize();
-            NodeList nodes_list = document.getElementsByTagName("sourceTarget");
-            // source is the name of the element
-            System.out.println("Source Target: "+nodes_list.getLength());
 
-            Element eElement = (Element) nodes_list.item(0);
-            System.out.println("Table Name: "+ eElement.getElementsByTagName("table").item(0).getTextContent());
-            System.out.println("Column1 : "+ eElement.getElementsByTagName("column1").item(0).getTextContent());
-            System.out.println("Column2 : "+ eElement.getElementsByTagName("column2").item(0).getTextContent());
-            System.out.println("Column3 : "+ eElement.getElementsByTagName("column3").item(0).getTextContent());
-            System.out.println("Column4 : "+ eElement.getElementsByTagName("column4").item(0).getTextContent());
-            System.out.println("get_data_from_URL : "+ eElement.getElementsByTagName("column1").item(0).getTextContent());
-            System.out.println("store_in_table : "+ eElement.getElementsByTagName("column1").item(0).getTextContent());
+            Document document=builder.parse(new File("./src/main/resources/" + filename));
+            NodeList source_Target = document.getElementsByTagName("sourceTarget");
+
+            System.out.println("Source Target: "+ source_Target.getLength());
+            Element eElement = (Element) source_Target.item(0);
+
+            tableName = eElement.getElementsByTagName("table").item(0).getTextContent();
+            NodeList column_list = eElement.getElementsByTagName("column");
+
+
+            for(int i = 0; i < column_list.getLength(); i++) {
+                columnName.add(eElement.getElementsByTagName("column1").item(i).getTextContent());
+            }
+
+            SourceTable srctable = new SourceTable(tableName, columnName);
+
+            System.out.println(srctable.getTableName());
+            System.out.println("get_data_from_URL : "+ eElement.getElementsByTagName("data_request").item(0).getTextContent());
+            System.out.println("store_in_table : "+ eElement.getElementsByTagName("store_class").item(0).getTextContent());
         }
         catch(Exception e){
             System.out.println(e);
         }
     }
 
-    public static void get_target_db(String filename) {
+    public static void get_target_table(String filename) {
 
     }
 
