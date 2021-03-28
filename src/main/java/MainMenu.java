@@ -1,7 +1,7 @@
 
 public class MainMenu {
     public static void main(String[] args) {
-        Transform.get_source_db("source.xml");
+        Transform.get_source_table("source.xml");
         String[] entry_details = new String[5];
         entry_details[0] = "eric";
         entry_details[1] = "john";

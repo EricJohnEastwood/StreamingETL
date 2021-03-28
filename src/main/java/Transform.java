@@ -77,14 +77,14 @@ public class Transform {
             tableName = eElement.getElementsByTagName("table").item(0).getTextContent();
             NodeList column_list = eElement.getElementsByTagName("column");
 
-
             for(int i = 0; i < column_list.getLength(); i++) {
-                columnName.add(eElement.getElementsByTagName("column1").item(i).getTextContent());
+                columnName.add(column_list.item(i).getTextContent());
             }
 
-            SourceTable srctable = new SourceTable(tableName, columnName);
+            SourceTable src_table = new SourceTable(tableName, columnName);
 
-            System.out.println(srctable.getTableName());
+            System.out.println(src_table.getTableName());
+            System.out.println(src_table.getColumnName());
             System.out.println("get_data_from_URL : "+ eElement.getElementsByTagName("data_request").item(0).getTextContent());
             System.out.println("store_in_table : "+ eElement.getElementsByTagName("store_class").item(0).getTextContent());
         }

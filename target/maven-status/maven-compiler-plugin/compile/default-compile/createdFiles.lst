@@ -1,7 +1,7 @@
 MainMenu.class
-SourceDB.class
+SourceTable.class
 Transformations.class
 GenInstructionDB.class
+TargetTable.class
 TransformMenu.class
 Transform.class
-TargetDB.class

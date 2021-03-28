@@ -12,6 +12,7 @@ public class SourceTable {
         this.columnName = new  ArrayList<String>();
         this.tableInitialized = false;
         this.columnInitialized = false;
+        System.out.println("Constructed SourceTable");
     }
 
     public SourceTable(String tableName) {
@@ -19,6 +20,7 @@ public class SourceTable {
         this.columnName = new  ArrayList<String>();
         this.tableInitialized = true;
         this.columnInitialized = false;
+        System.out.println("Constructed SourceTable");
     }
 
     public SourceTable(String tableName, ArrayList<String> columnName) {
@@ -26,6 +28,7 @@ public class SourceTable {
         this.columnName = columnName;
         this.tableInitialized = true;
         this.columnInitialized = true;
+        System.out.println("Constructed SourceTable");
     }
 
     public String getTableName() {

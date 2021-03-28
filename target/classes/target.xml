@@ -8,28 +8,28 @@
     <transformation>
         <type>json</type>
         <URL>url_to_loc</URL>
-        <transformation1>xtransformation1.class/function</transformation1>
-        <transformation2>xtransformation2.class/function</transformation2>
-        <transformation3>xtransformation3.class/function</transformation3>
-        <transformation4>xtransformation4.class/function</transformation4>
+        <transformation>xtransformation1.class/function</transformation>
+        <transformation>xtransformation2.class/function</transformation>
+        <transformation>xtransformation3.class/function</transformation>
+        <transformation>xtransformation4.class/function</transformation>
     </transformation>
 
     <transformation>
         <type>csv</type>
         <URL>url_to_loc</URL>
-        <transformation1>ytransformation1.class/function</transformation1>
-        <transformation2>ytransformation2.class/function</transformation2>
-        <transformation3>ytransformation3.class/function</transformation3>
-        <transformation4>ytransformation4.class/function</transformation4>
+        <transformation>ytransformation1.class/function</transformation>
+        <transformation>ytransformation2.class/function</transformation>
+        <transformation>ytransformation3.class/function</transformation>
+        <transformation>ytransformation4.class/function</transformation>
     </transformation>
 
     <transformationTarget>
         <table>foreign_exchange</table>
-        <column1>transformation1-res</column1>
-        <column2>transformation2-res</column2>
-        <column3>transformation3-res</column3>
-        <column4>transformation4-res</column4>
-        <column5>Date_Time</column5>
+        <column>transformation1-res</column>
+        <column>transformation2-res</column>
+        <column>transformation3-res</column>
+        <column>transformation4-res</column>
+        <column>Date_Time</column>
         <store_class>store_in_table.class/function</store_class>
     </transformationTarget>
 </transformations>
