@@ -73,4 +73,13 @@ public class SourceTable {
         this.storeDataModule = storeDataModule;
     }
 
+    @Override
+    public String toString() {
+        return "SourceTable{" +
+                "tableName='" + tableName + '\'' +
+                ", columnName=" + columnName +
+                ", urlRunModule='" + urlRunModule + '\'' +
+                ", storeDataModule='" + storeDataModule + '\'' +
+                '}';
+    }
 }

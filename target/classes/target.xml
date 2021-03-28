@@ -5,23 +5,23 @@
         <data_column>Data</data_column>
     </transformationSource>
 
-    <transformation>
+    <transformationStep>
         <type>json</type>
-        <URL>url_to_loc</URL>
+        <URL>url_to_loc_x</URL>
         <transformation>xtransformation1.class/function</transformation>
         <transformation>xtransformation2.class/function</transformation>
         <transformation>xtransformation3.class/function</transformation>
         <transformation>xtransformation4.class/function</transformation>
-    </transformation>
+    </transformationStep>
 
-    <transformation>
+    <transformationStep>
         <type>csv</type>
-        <URL>url_to_loc</URL>
+        <URL>url_to_loc_y</URL>
         <transformation>ytransformation1.class/function</transformation>
         <transformation>ytransformation2.class/function</transformation>
         <transformation>ytransformation3.class/function</transformation>
         <transformation>ytransformation4.class/function</transformation>
-    </transformation>
+    </transformationStep>
 
     <transformationTarget>
         <table>foreign_exchange</table>

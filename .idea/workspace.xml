@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3832f544-ac41-417e-99fd-f6b548139d29" name="Default Changelist" comment="">
+    <list default="true" id="3832f544-ac41-417e-99fd-f6b548139d29" name="Default Changelist" comment="basic Transform.get_transformation implementation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Transform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Transformations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Transformations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/target.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/target.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MainMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Transform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Transform.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Transformations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Transformations.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ConnectionDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/target.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/target.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616940708899</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="basic Transform.get_transformation implementation">
+      <created>1616947523028</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1616947523028</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -108,6 +110,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="started Transform.get_transformation implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="started Transform.get_transformation implementation" />
+    <MESSAGE value="basic Transform.get_transformation implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="basic Transform.get_transformation implementation" />
   </component>
 </project>

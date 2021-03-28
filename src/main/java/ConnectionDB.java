@@ -101,6 +101,12 @@ public class ConnectionDB {
             }// nothing we can do
         }
     }
+
+    @Override
+    public String toString() {
+        return "ConnectionDB{}";
+    }
+
 //
 //    public void selectFromTable(String selectCommand) {
 //        try {
