@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class Transformations {
@@ -44,5 +45,27 @@ public class Transformations {
 
     public String getNextTransformation() {
         return this.transformationTypesModule.remove(0);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transformations that = (Transformations) o;
+        return url.equals(that.url) && data_type.equals(that.data_type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(url, data_type);
+    }
+
+    @Override
+    public String toString() {
+        return "Transformations{" +
+                "url='" + url + '\'' +
+                ", data_type='" + data_type + '\'' +
+                ", transformationTypesModule=" + transformationTypesModule +
+                '}';
     }
 }
