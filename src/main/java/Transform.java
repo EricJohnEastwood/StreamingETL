@@ -92,8 +92,21 @@ public class Transform {
     }
 
     public static void get_transformation(String filename) {
+        try {
+            DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder=factory.newDocumentBuilder();
+            Document document=builder.parse(new File("./src/main/resources/" + filename));
 
+            NodeList  = document.getElementsByTagName("transformation");
 
+            Element eElement = (Element) source_Target.item(0);
+
+        }
+        catch(Exception e){
+            System.out.println(e);
+            System.out.println("Couldn't lod the transformations from the xml.");
+            return;
+        }
     }
 
     public void run_transformation() {
