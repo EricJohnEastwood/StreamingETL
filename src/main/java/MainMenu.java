@@ -4,6 +4,7 @@ public class MainMenu {
 //        testing transform class
         Transform.get_source_table("source.xml");
         Transform.get_target_table("target.xml");
+        Transform.get_transformation("target.xml");
 
 
 //        testing instructions construction in GenInstructionDB

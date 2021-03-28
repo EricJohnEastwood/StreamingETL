@@ -6,12 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="3832f544-ac41-417e-99fd-f6b548139d29" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Transform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Transformations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Transformations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/target.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/target.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MainMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Transform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Transform.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Transformations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Transformations.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -46,6 +55,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainMenu" />
@@ -61,6 +81,14 @@
       <option name="presentableId" value="Default" />
       <updated>1616822531822</updated>
     </task>
+    <task id="LOCAL-00001" summary="started Transform.get_transformation implementation">
+      <created>1616940708899</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1616940708899</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -76,5 +104,10 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="started Transform.get_transformation implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="started Transform.get_transformation implementation" />
   </component>
 </project>

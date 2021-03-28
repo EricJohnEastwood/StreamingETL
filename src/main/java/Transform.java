@@ -3,6 +3,8 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.sql.*;
 
@@ -96,15 +98,42 @@ public class Transform {
             DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
             DocumentBuilder builder=factory.newDocumentBuilder();
             Document document=builder.parse(new File("./src/main/resources/" + filename));
+            HashMap<ArrayList<String>,Transformations> transformations = new HashMap<ArrayList<String>,Transformations>();
 
-            NodeList  = document.getElementsByTagName("transformation");
+            NodeList transformationSteps = document.getElementsByTagName("transformationStep");
 
-            Element eElement = (Element) source_Target.item(0);
+            for(int i=0; i<transformationSteps.getLength(); i++){
+                Element eElement = (Element) transformationSteps.item(i);
+                String type = eElement.getElementsByTagName("type").item(0).getTextContent();
+                String url = eElement.getElementsByTagName("URL").item(0).getTextContent();
+                ArrayList<String> tcs = new ArrayList<String>();
 
+                NodeList tcs_elems = eElement.getElementsByTagName("transformation");
+                for(int j=0; j<tcs_elems.getLength(); j++){
+                    Element tmp = (Element) tcs_elems.item(j);
+                    tcs.add(tmp.getTextContent());
+                }
+                Transformations value = new Transformations(url, type, tcs);
+
+                ArrayList<String> key = new ArrayList<String>();
+                key.add(url);
+                key.add(type);
+                transformations.put(key, value);
+            }
+
+            //Testing this method
+            System.out.println("Testing get_transformation");
+            ArrayList<String> k = new ArrayList<String>(Arrays.asList("url_to_loc_x","json"));
+            Transformations v = (Transformations) transformations.get(k);
+            System.out.println(v);
+
+            k = new ArrayList<String>(Arrays.asList("url_to_loc_y","csv"));
+            v = (Transformations) transformations.get(k);
+            System.out.println(v);
         }
         catch(Exception e){
             System.out.println(e);
-            System.out.println("Couldn't lod the transformations from the xml.");
+            System.out.println("Couldn't load the transformations from the xml.");
             return;
         }
     }
