@@ -10,8 +10,6 @@ import java.sql.*;
 
 public class Transform {
 
-
-
     public static void get_source_table(String filename) {
         try{
             String tableName;
@@ -41,10 +39,7 @@ public class Transform {
 
             SourceTable source_table = new SourceTable(tableName, columnName, urlRunModule, storeDataModule);
 
-            System.out.println(source_table.getTableName());
-            System.out.println(source_table.getColumnName());
-            System.out.println(source_table.getUrlRunModule());
-            System.out.println(source_table.getStoreDataModule());
+            System.out.println(source_table);
 
         }
         catch(Exception e){
@@ -80,9 +75,7 @@ public class Transform {
 
             TargetTable target_table = new TargetTable(tableName, columnName, storeDataModule);
 
-            System.out.println(target_table.getTableName());
-            System.out.println(target_table.getColumnName());
-            System.out.println(target_table.getStoreDataModule());
+            System.out.println(target_table);
 
         }
         catch(Exception e){

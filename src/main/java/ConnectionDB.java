@@ -15,8 +15,8 @@ public class ConnectionDB {
 
     //constructor
     public ConnectionDB() {
-        conn = null;
-        stmt = null;
+        this.conn = null;
+        this.stmt = null;
     }
 
     public void connectToDB() {
@@ -24,7 +24,7 @@ public class ConnectionDB {
             Class.forName(JDBC_DRIVER);
 
             System.out.println("Connecting to database...");
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            this.conn = DriverManager.getConnection(DB_URL, USER, PASS);
             System.out.println("Connected...");
 
         } catch(Exception se){
@@ -35,18 +35,18 @@ public class ConnectionDB {
 
     public void disconnectFromDB() {
         try {
-            conn.close();
+            this.conn.close();
         }catch(SQLException se){
             se.printStackTrace();
         }finally{
             try{
-                if(stmt!=null)
-                    stmt.close();
+                if(this.stmt!=null)
+                    this.stmt.close();
             }catch(SQLException se2){
             }
             try{
                 if(conn!=null)
-                    conn.close();
+                    this.conn.close();
             }catch(SQLException se){
                 se.printStackTrace();
             }
@@ -57,11 +57,11 @@ public class ConnectionDB {
     public void insertIntoTable(String insertCommand) {
         try {
             conn.setAutoCommit(false);
-            stmt = conn.createStatement();
-            stmt.executeUpdate(insertCommand);
+            this.stmt = this.conn.createStatement();
+            this.stmt.executeUpdate(insertCommand);
 
-            conn.commit();
-            stmt.close();
+            this.conn.commit();
+            this.stmt.close();
 
             System.out.println(insertCommand);
         } catch(Exception se){
@@ -71,21 +71,21 @@ public class ConnectionDB {
         finally {
             try{
 
-                if(stmt!=null)
-                    stmt.close();
+                if(this.stmt!=null)
+                    this.stmt.close();
             }catch(SQLException se2){
-            }// nothing we can do
+            }
         }
     }
 
     public void deleteFromTable(String deleteCommand) {
         try {
-            conn.setAutoCommit(false);
-            stmt = conn.createStatement();
-            stmt.executeUpdate(deleteCommand);
+            this.conn.setAutoCommit(false);
+            this.stmt = this.conn.createStatement();
+            this.stmt.executeUpdate(deleteCommand);
 
-            conn.commit();
-            stmt.close();
+            this.conn.commit();
+            this.stmt.close();
 
             System.out.println(deleteCommand);
         } catch(Exception se){
@@ -95,12 +95,18 @@ public class ConnectionDB {
         finally {
             try{
 
-                if(stmt!=null)
-                    stmt.close();
+                if(this.stmt!=null)
+                    this.stmt.close();
             }catch(SQLException se2){
-            }// nothing we can do
+            }
         }
     }
+
+    @Override
+    public String toString() {
+        return "ConnectionDB{}";
+    }
+
 //
 //    public void selectFromTable(String selectCommand) {
 //        try {

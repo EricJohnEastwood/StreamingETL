@@ -57,4 +57,13 @@ public class TargetTable {
     public void setStoreDataModule(String storeDataModule) {
         this.storeDataModule = storeDataModule;
     }
+
+    @Override
+    public String toString() {
+        return "TargetTable{" +
+                "tableName='" + tableName + '\'' +
+                ", columnName=" + columnName +
+                ", storeDataModule='" + storeDataModule + '\'' +
+                '}';
+    }
 }
