@@ -1,5 +1,6 @@
 MainMenu.class
 SourceTable.class
+ConnectionDB.class
 Transformations.class
 GenInstructionDB.class
 TargetTable.class
