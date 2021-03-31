@@ -15,7 +15,14 @@ public class MainMenu {
         entry_details[0] = "eric";
         entry_details[1] = "john";
         System.out.println(GenInstructionDB.insert_instruction("source_data_dump", entry_details));
-        System.out.println(GenInstructionDB.select_one_row_instruction("source_data_dump", "Date_Time"));
+        System.out.println(GenInstructionDB.select_one_instruction("source_data_dump", "Date_Time"));
+
+//        Testing SQL connection
+        ConnectionDB connectionDB = new ConnectionDB();
+        connectionDB.connectToDB();
+
+        String selectCommand = GenInstructionDB.select_one_instruction("source_data_dump", "Date_Time");
+        System.out.println(connectionDB.selectFromTable(selectCommand,engine));
 
     }
 }

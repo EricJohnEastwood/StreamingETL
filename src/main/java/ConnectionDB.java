@@ -1,7 +1,5 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class ConnectionDB {
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -102,13 +100,42 @@ public class ConnectionDB {
         }
     }
 
-    @Override
-    public String toString() {
-        return "ConnectionDB{}";
+    public SourceTable selectFromTable(String selectCommand, EngineData engine) {
+        try {
+            conn.setAutoCommit(false);
+            stmt = conn.createStatement();
+
+            ResultSet rs = null;
+            rs = stmt.executeQuery(selectCommand);
+            ResultSetMetaData rsMetaData = rs.getMetaData();
+            String tableName = rsMetaData.getTableName(4);
+            ArrayList<String> columnValues = new ArrayList<String>();
+
+            if(rs.next()) {
+
+                for (int i = 2; i <= engine.getSourceTable().getColumnName().size()+1; i++) { // indexing starts from 1
+                    columnValues.add(rs.getString(i));
+                    System.out.println(rs.getString(i));
+                }
+            }
+            else {
+                System.out.println("Not Found");
+            }
+            conn.commit();
+            stmt.close();
+            System.out.println(selectCommand);
+            return new SourceTable(tableName,columnValues,"","");
+        } catch(Exception se){
+            se.printStackTrace();
+        }
+        finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se2){
+            }
+        }
+        return null;
     }
 
-//
-//    public void selectFromTable(String selectCommand) {
-//        try {
-//    }
 }

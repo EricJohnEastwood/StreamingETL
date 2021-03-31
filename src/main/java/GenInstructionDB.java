@@ -11,8 +11,7 @@ public class GenInstructionDB {
     }
 
     public static String delete_instruction(String table_name, String UID_column, String key_to_data) {
-        String s = "DELETE FROM " + table_name + " WHERE " + UID_column + " = " + "'" + key_to_data + "'";
-        return s;
+        return "DELETE FROM " + table_name + " WHERE " + UID_column + " = " + "'" + key_to_data + "'";
     }
 
     public static String select_instruction(String table_name, String[] columns, String condition) {
@@ -25,9 +24,8 @@ public class GenInstructionDB {
         return s;
     }
 
-    public static String select_one_row_instruction(String table_name, String date_time) {
-        String s = "SELECT * FROM " + table_name + " WHERE " + date_time + " = (SELECT MIN(" + date_time + ") FROM " + table_name + ")";
-        return s;
+    public static String select_one_instruction(String table_name, String date_time) {
+        return "SELECT * FROM " + table_name + " WHERE " + date_time + " = (SELECT MIN(" + date_time + ") FROM " + table_name + ")";
     }
 }
 
