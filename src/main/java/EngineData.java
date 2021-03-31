@@ -36,8 +36,14 @@ public class EngineData {
         this.target_table.setStoreDataModule(storeDataModule);
     }
 
-    public void constructTransformations() {
+    public void constructTransformations(String url, String data_type, ArrayList<String> transformationTypesModule) {
+        ArrayList<String> key = new ArrayList<String>();
+        key.add(url);
+        key.add(data_type);
 
+        Transformations value = new Transformations(url, data_type, transformationTypesModule);
+
+        this.transformations.put(key, value);
     }
 
     @Override
