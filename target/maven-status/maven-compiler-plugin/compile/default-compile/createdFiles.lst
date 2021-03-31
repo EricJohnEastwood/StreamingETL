@@ -4,5 +4,6 @@ ConnectionDB.class
 Transformations.class
 GenInstructionDB.class
 TargetTable.class
+CommandLineTransformations.class
 TransformMenu.class
 Transform.class

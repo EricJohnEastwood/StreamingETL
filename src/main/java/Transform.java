@@ -99,6 +99,7 @@ public class Transform {
                 Element eElement = (Element) transformationSteps.item(i);
                 String type = eElement.getElementsByTagName("type").item(0).getTextContent();
                 String url = eElement.getElementsByTagName("URL").item(0).getTextContent();
+
                 ArrayList<String> tcs = new ArrayList<String>();
 
                 NodeList tcs_elems = eElement.getElementsByTagName("transformation");
@@ -132,6 +133,12 @@ public class Transform {
     }
 
     public void run_transformation() {
+        try {
+
+        } catch (Exception e) {
+            System.out.println(e);
+            System.out.println("Couldn't run the thread.");
+        }
 
     }
 
