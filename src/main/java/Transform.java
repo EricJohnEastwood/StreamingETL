@@ -112,6 +112,7 @@ public class Transform {
 
             String table_name = engine.getSourceTable().getTableName();
             String uid = "Date_Time";
+            String[] class_method_str;
 
             // Get one row from source data dump
             String selectCommand = GenInstructionDB.select_one_instruction(table_name, uid);
@@ -122,15 +123,23 @@ public class Transform {
 
             System.out.println(table_for_transform);
             System.out.println(transformation_to_run);
-            System.out.println();
 
-            for(int i = 0; i < transformation_to_run.size(); i++) {
-                Class cls = Class.forName("DummyTransformation");
-                Object obj = cls.newInstance();
-                Method method = cls.getDeclaredMethod("testingDummy", String.class);
-                method.invoke(obj, table_for_transform.getData());
-                System.out.println("Testing successful");
+            try {
+                for (int i = 0; i < transformation_to_run.getSize(); i++) {
+                    String temp = transformation_to_run.getTransformationTypesModule(i);
+                    class_method_str = transformation_to_run.getTransformationTypesModule(i).split("\\.");
+                    Class cls = Class.forName(class_method_str[0]);
+                    Object obj = cls.newInstance();
+                    Method method = cls.getDeclaredMethod(class_method_str[1], String.class);
+                    method.invoke(obj, table_for_transform.getData());
+
+                }
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Testing failed");
+                return;
+
             }
+            System.out.println("Testing successful");
 
             // Delete transformed row from source data dump
             String deleteCommand = GenInstructionDB.delete_instruction(table_name, uid, table_for_transform.getColumnName().get(2));
