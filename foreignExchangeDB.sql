@@ -1,3 +1,4 @@
+
 DROP TABLE IF EXISTS `foreign_exchange`;
 
 CREATE TABLE `foreign_exchange`
@@ -15,7 +16,7 @@ DROP TABLE IF EXISTS `source_data_dump`;
 
 CREATE TABLE `source_data_dump`
 (
-  `Source_Data_Dump_Id` text,
+  `Source_Data_Id` text,
   `Type` text,
   `Url_To_Loc` text,
   `Date_Time` datetime DEFAULT NULL,

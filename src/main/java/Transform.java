@@ -105,9 +105,28 @@ public class Transform {
         }
     }
 
-    public void run_transformation(EngineData engine) {
+    public static void run_transformation(EngineData engine, ConnectionDB connectionDB) {
         try {
+            System.out.println("running a transformation");
 
+            String table_name = engine.getSourceTable().getTableName();
+            String uid = "Date_Time";
+
+            String selectCommand = GenInstructionDB.select_one_instruction(table_name, uid);
+
+            SourceTable table_for_transform = connectionDB.selectFromTable(selectCommand,engine);
+
+            ArrayList<String> key_to_transformation = new ArrayList<String>();
+            key_to_transformation.add(table_for_transform.getColumnName().get(1));
+            key_to_transformation.add(table_for_transform.getColumnName().get(0));
+            Transformations transformation_to_run = engine.getOneTransformation(key_to_transformation);
+
+
+            System.out.println(table_for_transform);
+            System.out.println(transformation_to_run);
+            System.out.println();
+
+            System.out.println("Exit thread");
         } catch (Exception e) {
             System.out.println(e);
             System.out.println("Couldn't run the thread.");

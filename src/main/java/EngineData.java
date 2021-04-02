@@ -23,6 +23,10 @@ public class EngineData {
         return this.target_table;
     }
 
+    public Transformations getOneTransformation(ArrayList<String> key) {
+        return transformations.get(key);
+    }
+
     public void constructSourceTable(String tableName, ArrayList<String> columnName, String urlRunModule, String storeDataModule) {
         this.source_table.setTableName(tableName);
         this.source_table.setColumnName(columnName);

@@ -112,14 +112,13 @@ public class ConnectionDB {
             ArrayList<String> columnValues = new ArrayList<String>();
 
             if(rs.next()) {
-
                 for (int i = 2; i <= engine.getSourceTable().getColumnName().size()+1; i++) { // indexing starts from 1
                     columnValues.add(rs.getString(i));
                     System.out.println(rs.getString(i));
                 }
             }
             else {
-                System.out.println("Not Found");
+                System.out.println("Not Found / Table Empty");
             }
             conn.commit();
             stmt.close();
