@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.sql.*;
+import java.lang.reflect.Method;
 
 
 
@@ -112,20 +113,26 @@ public class Transform {
             String table_name = engine.getSourceTable().getTableName();
             String uid = "Date_Time";
 
+            // Get one row from source data dump
             String selectCommand = GenInstructionDB.select_one_instruction(table_name, uid);
-
             SourceTable table_for_transform = connectionDB.selectFromTable(selectCommand,engine);
 
-            ArrayList<String> key_to_transformation = new ArrayList<String>();
-            key_to_transformation.add(table_for_transform.getColumnName().get(1));
-            key_to_transformation.add(table_for_transform.getColumnName().get(0));
-            Transformations transformation_to_run = engine.getOneTransformation(key_to_transformation);
 
+            Transformations transformation_to_run = engine.getOneTransformation(table_for_transform.getKey());
 
             System.out.println(table_for_transform);
             System.out.println(transformation_to_run);
             System.out.println();
 
+            for(int i = 0; i < transformation_to_run.size(); i++) {
+                Class cls = Class.forName("DummyTransformation");
+                Object obj = cls.newInstance();
+                Method method = cls.getDeclaredMethod("testingDummy", String.class);
+                method.invoke(obj, table_for_transform.getData());
+                System.out.println("Testing successful");
+            }
+
+            // Delete transformed row from source data dump
             String deleteCommand = GenInstructionDB.delete_instruction(table_name, uid, table_for_transform.getColumnName().get(2));
             System.out.println(deleteCommand);
             connectionDB.deleteFromTable(deleteCommand);

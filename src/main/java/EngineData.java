@@ -42,8 +42,8 @@ public class EngineData {
 
     public void constructTransformations(String url, String data_type, ArrayList<String> transformationTypesModule) {
         ArrayList<String> key = new ArrayList<String>();
-        key.add(url);
         key.add(data_type);
+        key.add(url);
 
         Transformations value = new Transformations(url, data_type, transformationTypesModule);
 

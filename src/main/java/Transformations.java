@@ -27,6 +27,10 @@ public class Transformations {
         return this.data_type;
     }
 
+    public Integer size() {
+        return this.transformationTypesModule.size();
+    }
+
     public ArrayList<String> getTransformationTypesModule() {
         return this.transformationTypesModule;
     }
