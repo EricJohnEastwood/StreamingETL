@@ -126,7 +126,11 @@ public class Transform {
             System.out.println(transformation_to_run);
             System.out.println();
 
-            System.out.println("Exit thread");
+            String deleteCommand = GenInstructionDB.delete_instruction(table_name, uid, table_for_transform.getColumnName().get(2));
+            System.out.println(deleteCommand);
+            connectionDB.deleteFromTable(deleteCommand);
+
+            System.out.println("Exiting thread");
         } catch (Exception e) {
             System.out.println(e);
             System.out.println("Couldn't run the thread.");
