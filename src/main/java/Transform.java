@@ -126,7 +126,6 @@ public class Transform {
 
             try {
                 for (int i = 0; i < transformation_to_run.getSize(); i++) {
-                    String temp = transformation_to_run.getTransformationTypesModule(i);
                     class_method_str = transformation_to_run.getTransformationTypesModule(i).split("\\.");
                     Class cls = Class.forName(class_method_str[0]);
                     Object obj = cls.newInstance();
