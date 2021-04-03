@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3832f544-ac41-417e-99fd-f6b548139d29" name="Default Changelist" comment="basic Transform.get_transformation implementation">
+    <list default="true" id="3832f544-ac41-417e-99fd-f6b548139d29" name="Default Changelist" comment="Tested ConnectionDB">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CommandLineTransformations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CommandLineTransformations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DummyTransformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DummyTransformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Transform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Transformations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Transformations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/target.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/target.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SourceTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SourceTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Transform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Transform.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Transformations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Transformations.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +34,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="ProjectId" id="1qKJolkuVgQvPvN2Ntgqga5s1Uc" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -37,27 +51,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="Application.CommandLineTransformations">
-    <configuration name="CommandLineTransformations" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="CommandLineTransformations" />
-      <module name="StreamingETL" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainMenu" />
       <module name="FinalProject" />
@@ -67,7 +65,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CommandLineTransformations" />
         <item itemvalue="Application.MainMenu" />
       </list>
     </recent_temporary>
@@ -97,11 +94,71 @@
       <option name="project" value="LOCAL" />
       <updated>1616947523028</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="basic Transform.get_transformation implementation">
+      <created>1617013469022</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1617013469022</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added EngineData">
+      <created>1617200818176</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1617200818176</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added EngineData object">
+      <created>1617209062296</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1617209062296</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added EngineData object">
+      <created>1617210851522</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1617210851522</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Tested ConnectionDB">
+      <created>1617213472178</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1617213472178</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added run_transformation Basic">
+      <created>1617343096621</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1617343096621</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added run_transformation Basic">
+      <created>1617343380040</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1617343380040</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added run_transformation Basic">
+      <created>1617344343212</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1617344343212</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added calling method from string">
+      <created>1617373477755</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1617373477755</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.sql" />
@@ -121,6 +178,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="started Transform.get_transformation implementation" />
     <MESSAGE value="basic Transform.get_transformation implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="basic Transform.get_transformation implementation" />
+    <MESSAGE value="Added EngineData" />
+    <MESSAGE value="Added EngineData object" />
+    <MESSAGE value="Tested ConnectionDB" />
+    <MESSAGE value="Added run_transformation Basic" />
+    <MESSAGE value="Added calling method from string" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added calling method from string" />
   </component>
 </project>

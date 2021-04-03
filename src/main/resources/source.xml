@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sources xmlns="http://www.ETL.in">
     <source>
-        <URL>url_to_loc</URL>
+        <URL>https://api.exchangeratesapi.io/latest</URL>
         <type>json</type>
-        <queryFrequency> </queryFrequency>
+        <queryFrequency>2</queryFrequency>
     </source>
 
     <source>
-        <URL>url_to_loc</URL>
+        <URL>https://api.exchangeratesapi.io/latest</URL>
         <type>csv</type>
-        <queryFrequency> </queryFrequency>
+        <queryFrequency>2</queryFrequency>
     </source>
 
     <sourceTarget>

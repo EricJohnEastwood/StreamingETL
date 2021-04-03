@@ -65,6 +65,17 @@ public class SourceTable {
         this.columnInitialized = true;
     }
 
+    public ArrayList<String> getKey() {
+        ArrayList<String> key = new ArrayList<String>();
+        key.add(this.columnName.get(0));
+        key.add(this.columnName.get(1));
+        return key;
+    }
+
+    public  String getData() {
+        return this.columnName.get(3);
+    }
+
     public void setUrlRunModule(String urlRunModule) {
         this.urlRunModule = urlRunModule;
     }

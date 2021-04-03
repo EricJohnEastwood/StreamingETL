@@ -1,7 +1,10 @@
 MainMenu.class
 SourceTable.class
+ConnectionDB.class
 Transformations.class
 GenInstructionDB.class
 TargetTable.class
+CommandLineTransformations.class
 TransformMenu.class
 Transform.class
+EngineData.class

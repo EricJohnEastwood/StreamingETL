@@ -7,20 +7,20 @@
 
     <transformationStep>
         <type>json</type>
-        <URL>url_to_loc_x</URL>
-        <transformation>xtransformation1.class/function</transformation>
-        <transformation>xtransformation2.class/function</transformation>
-        <transformation>xtransformation3.class/function</transformation>
-        <transformation>xtransformation4.class/function</transformation>
+        <URL>https://api.exchangeratesapi.io/latest</URL>
+        <transformation>DummyTransformation.testingDummy1</transformation>
+        <transformation>DummyTransformation.testingDummy2</transformation>
+        <transformation>DummyTransformation.testingDummy3</transformation>
+        <transformation>DummyTransformation.testingDummy4</transformation>
     </transformationStep>
 
     <transformationStep>
         <type>csv</type>
-        <URL>url_to_loc_y</URL>
-        <transformation>ytransformation1.class/function</transformation>
-        <transformation>ytransformation2.class/function</transformation>
-        <transformation>ytransformation3.class/function</transformation>
-        <transformation>ytransformation4.class/function</transformation>
+        <URL>https://api.exchangeratesapi.io/latest</URL>
+        <transformation>DummyTransformation.testingDummy1</transformation>
+        <transformation>DummyTransformation.testingDummy2</transformation>
+        <transformation>DummyTransformation.testingDummy3</transformation>
+        <transformation>DummyTransformation.testingDummy4</transformation>
     </transformationStep>
 
     <transformationTarget>

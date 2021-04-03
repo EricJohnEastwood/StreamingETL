@@ -27,8 +27,12 @@ public class Transformations {
         return this.data_type;
     }
 
-    public ArrayList<String> getTransformationTypesModule() {
-        return this.transformationTypesModule;
+    public Integer getSize() {
+        return this.transformationTypesModule.size();
+    }
+
+    public String getTransformationTypesModule(Integer i) {
+        return this.transformationTypesModule.get(i);
     }
 
     public void setUrl(String url) {

@@ -7,12 +7,13 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.sql.*;
+import java.lang.reflect.Method;
+
+
 
 public class Transform {
 
-
-
-    public static void get_source_table(String filename) {
+    public static void get_source_table(String filename, EngineData engine) {
         try{
             String tableName;
             ArrayList<String> columnName = new ArrayList<String>();
@@ -25,36 +26,26 @@ public class Transform {
             Document document=builder.parse(new File("./src/main/resources/" + filename));
 //           remove hardcoded target
             NodeList source_Target = document.getElementsByTagName("sourceTarget");
-
             Element eElement = (Element) source_Target.item(0);
 
             tableName = eElement.getElementsByTagName("table").item(0).getTextContent();
             NodeList column_list = eElement.getElementsByTagName("column");
-
             for(int i = 0; i < column_list.getLength(); i++) {
                 columnName.add(column_list.item(i).getTextContent());
             }
-
-
             urlRunModule = eElement.getElementsByTagName("data_request").item(0).getTextContent();
             storeDataModule =  eElement.getElementsByTagName("store_class").item(0).getTextContent();
 
-            SourceTable source_table = new SourceTable(tableName, columnName, urlRunModule, storeDataModule);
-
-            System.out.println(source_table.getTableName());
-            System.out.println(source_table.getColumnName());
-            System.out.println(source_table.getUrlRunModule());
-            System.out.println(source_table.getStoreDataModule());
+            engine.constructSourceTable(tableName, columnName, urlRunModule, storeDataModule);
 
         }
         catch(Exception e){
             System.out.println(e);
             System.out.println("Couldn't insert source table Data");
-            return;
         }
     }
 
-    public static void get_target_table(String filename) {
+    public static void get_target_table(String filename, EngineData engine) {
         try{
             String tableName;
             ArrayList<String> columnName = new ArrayList<String>();
@@ -66,39 +57,30 @@ public class Transform {
             Document document=builder.parse(new File("./src/main/resources/" + filename));
 //          remove hardcoded target
             NodeList source_Target = document.getElementsByTagName("transformationTarget");
-
             Element eElement = (Element) source_Target.item(0);
 
             tableName = eElement.getElementsByTagName("table").item(0).getTextContent();
             NodeList column_list = eElement.getElementsByTagName("column");
-
             for(int i = 0; i < column_list.getLength(); i++) {
                 columnName.add(column_list.item(i).getTextContent());
             }
-
             storeDataModule = eElement.getElementsByTagName("store_class").item(0).getTextContent();
 
-            TargetTable target_table = new TargetTable(tableName, columnName, storeDataModule);
-
-            System.out.println(target_table.getTableName());
-            System.out.println(target_table.getColumnName());
-            System.out.println(target_table.getStoreDataModule());
+            engine.constructTargetTable(tableName, columnName, storeDataModule);
 
         }
         catch(Exception e){
             System.out.println(e);
             System.out.println("Couldn't insert target table Data");
-            return;
         }
 
     }
 
-    public static void get_transformation(String filename) {
+    public static void get_transformation(String filename, EngineData engine) {
         try {
             DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
             DocumentBuilder builder=factory.newDocumentBuilder();
             Document document=builder.parse(new File("./src/main/resources/" + filename));
-            HashMap<ArrayList<String>,Transformations> transformations = new HashMap<ArrayList<String>,Transformations>();
 
             NodeList transformationSteps = document.getElementsByTagName("transformationStep");
 
@@ -106,6 +88,7 @@ public class Transform {
                 Element eElement = (Element) transformationSteps.item(i);
                 String type = eElement.getElementsByTagName("type").item(0).getTextContent();
                 String url = eElement.getElementsByTagName("URL").item(0).getTextContent();
+
                 ArrayList<String> tcs = new ArrayList<String>();
 
                 NodeList tcs_elems = eElement.getElementsByTagName("transformation");
@@ -113,34 +96,59 @@ public class Transform {
                     Element tmp = (Element) tcs_elems.item(j);
                     tcs.add(tmp.getTextContent());
                 }
-                Transformations value = new Transformations(url, type, tcs);
 
-                ArrayList<String> key = new ArrayList<String>();
-                key.add(url);
-                key.add(type);
-                transformations.put(key, value);
+                engine.constructTransformations(url, type, tcs);
             }
-
-            //Testing this method
-            System.out.println("Testing get_transformation");
-            ArrayList<String> k = new ArrayList<String>(Arrays.asList("url_to_loc_x","json"));
-            Transformations v = (Transformations) transformations.get(k);
-            System.out.println(v);
-
-            k = new ArrayList<String>(Arrays.asList("url_to_loc_y","csv"));
-            v = (Transformations) transformations.get(k);
-            System.out.println(v);
         }
         catch(Exception e){
             System.out.println(e);
             System.out.println("Couldn't load the transformations from the xml.");
-            return;
         }
     }
 
-    public void run_transformation() {
+    public static void run_transformation(EngineData engine, ConnectionDB connectionDB) {
+        try {
+            System.out.println("running a transformation");
 
+            String table_name = engine.getSourceTable().getTableName();
+            String uid = "Date_Time";
+            String[] class_method_str;
+
+            // Get one row from source data dump
+            String selectCommand = GenInstructionDB.select_one_instruction(table_name, uid);
+            SourceTable table_for_transform = connectionDB.selectFromTable(selectCommand,engine);
+
+
+            Transformations transformation_to_run = engine.getOneTransformation(table_for_transform.getKey());
+
+            System.out.println(table_for_transform);
+            System.out.println(transformation_to_run);
+
+            try {
+                for (int i = 0; i < transformation_to_run.getSize(); i++) {
+                    class_method_str = transformation_to_run.getTransformationTypesModule(i).split("\\.");
+                    Class cls = Class.forName(class_method_str[0]);
+                    Object obj = cls.newInstance();
+                    Method method = cls.getDeclaredMethod(class_method_str[1], String.class);
+                    method.invoke(obj, table_for_transform.getData());
+
+                }
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Testing failed");
+                return;
+
+            }
+            System.out.println("Testing successful");
+
+            // Delete transformed row from source data dump
+            String deleteCommand = GenInstructionDB.delete_instruction(table_name, uid, table_for_transform.getColumnName().get(2));
+            System.out.println(deleteCommand);
+            connectionDB.deleteFromTable(deleteCommand);
+
+            System.out.println("Exiting thread");
+        } catch (Exception e) {
+            System.out.println(e);
+            System.out.println("Couldn't run the thread.");
+        }
     }
-
-
 }
