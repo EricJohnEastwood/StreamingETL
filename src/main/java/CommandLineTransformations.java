@@ -196,6 +196,76 @@ public class CommandLineTransformations {
                 System.out.println(dropForeignKey);
                 obj.executeStatement(dropForeignKey);
             }
+            else if(ch==9)// Querying using WHERE
+            {
+                System.out.println("Enter the name of the table");
+                String table = scanner.next();
+                System.out.println("Enter the number of columns");
+                int no_of_columns = scanner.nextInt();
+                System.out.println("Enter the list of columns");
+                String columns = "";
+                for(int i=0; i<no_of_columns; i++)
+                {
+                    String column = scanner.next();
+                    columns+=(column);
+                    if(i<(no_of_columns-1))
+                    {
+                        columns+=", ";
+                    }
+                }
+                System.out.println("Enter your condition");
+                String condition = scanner.next();
+                String selectCondition = "SELECT "+columns+" FROM "+table+" WHERE "+condition+";";
+                System.out.println(selectCondition);
+                obj.executeStatement(selectCondition);
+            }
+            else if(ch==10)// Querying using PATTERN
+            {
+                System.out.println("Enter the name of the table");
+                String table = scanner.next();
+                System.out.println("Enter the number of columns");
+                int no_of_columns = scanner.nextInt();
+                System.out.println("Enter the list of columns");
+                String columns = "";
+                for(int i=0; i<no_of_columns; i++)
+                {
+                    String column = scanner.next();
+                    columns+=(column);
+                    if(i<(no_of_columns-1))
+                    {
+                        columns+=", ";
+                    }
+                }
+                System.out.println("Enter your condition");
+                String pattern = scanner.next();
+                String patternSelect = "SELECT "+columns+" FROM "+table+" WHERE column LIKE "+pattern+";";
+                System.out.println(patternSelect);
+                obj.executeStatement(patternSelect);
+            }
+            else if(ch==11)// Querying using regular expression
+            {
+                System.out.println("Enter the name of the table");
+                String table = scanner.next();
+                System.out.println("Enter the number of columns");
+                int no_of_columns = scanner.nextInt();
+                System.out.println("Enter the list of columns");
+                String columns = "";
+                for(int i=0; i<no_of_columns; i++)
+                {
+                    String column = scanner.next();
+                    columns+=(column);
+                    if(i<(no_of_columns-1))
+                    {
+                        columns+=", ";
+                    }
+                }
+                System.out.println("Enter your condition");
+                String regularExpression = scanner.next();
+                String regularExpressionSelect = "SELECT "+columns+" FROM "+table+" WHERE column RLIKE "+regularExpression+";";
+                System.out.println(regularExpressionSelect);
+                obj.executeStatement(regularExpressionSelect);
+            }
+
         }
         obj.disconnectFromDB();
 

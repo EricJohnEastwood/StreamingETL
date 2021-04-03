@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3832f544-ac41-417e-99fd-f6b548139d29" name="Default Changelist" comment="basic Transform.get_transformation implementation">
-      <change afterPath="$PROJECT_DIR$/src/main/java/CommandLineTransformations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SourceTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SourceTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TargetTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TargetTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Transform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Transform.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Transformations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Transformations.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CommandLineTransformations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CommandLineTransformations.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,19 +65,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.CommandLineTransformations" />
@@ -98,7 +80,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1616822531822</updated>
-      <workItem from="1616994970253" duration="10219000" />
+      <workItem from="1616994970253" duration="11702000" />
+      <workItem from="1617453816850" duration="3300000" />
     </task>
     <task id="LOCAL-00001" summary="started Transform.get_transformation implementation">
       <created>1616940708899</created>
