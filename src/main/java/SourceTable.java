@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 
-public class SourceTable {
-    private String tableName;
-    private ArrayList<String> columnName;
+public class SourceTable extends Table{
+    private String data_time_column;
     private String urlRunModule;
     private String storeDataModule;
     private boolean tableInitialized; // true  init, false not int
@@ -10,32 +9,33 @@ public class SourceTable {
 
 
     public SourceTable() {
-        this.tableName = "";
-        this.columnName = new  ArrayList<String>();
+        super();
         this.urlRunModule= "";
         this.storeDataModule = "";
         this.tableInitialized = false;
         this.columnInitialized = false;
+        this.data_time_column = "Data_Time";
         System.out.println("Constructed SourceTable");
     }
 
     public SourceTable(String tableName) {
-        this.tableName = tableName;
+        super(tableName);
         this.columnName = new  ArrayList<String>();
         this.urlRunModule= "";
         this.storeDataModule = "";
         this.tableInitialized = true;
         this.columnInitialized = false;
+        this.data_time_column = "Data_Time";
         System.out.println("Constructed SourceTable");
     }
 
     public SourceTable(String tableName, ArrayList<String> columnName, String urlRunModule, String storeDataModule) {
-        this.tableName = tableName;
-        this.columnName = columnName;
+        super(tableName, columnName);
         this.urlRunModule= urlRunModule;
         this.storeDataModule = storeDataModule;
         this.tableInitialized = true;
         this.columnInitialized = true;
+        this.data_time_column = "Data_Time";
         System.out.println("Constructed SourceTable");
     }
 
@@ -82,6 +82,16 @@ public class SourceTable {
 
     public void setStoreDataModule(String storeDataModule) {
         this.storeDataModule = storeDataModule;
+    }
+
+    public SourceRow select_top_row(ConnectionDB connectionDB){
+        String selectCommand = GenInstructionDB.select_one_instruction(this.tableName, this.data_time_column);
+        return connectionDB.selectFromTable(selectCommand, this);
+    }
+
+    public void delete_row(ConnectionDB connectionDB, SourceRow sourceRow){
+        String deleteCommand = GenInstructionDB.delete_instruction(this.tableName, this.data_time_column, sourceRow.getRow(this.data_time_column));
+        connectionDB.deleteFromTable(deleteCommand);
     }
 
     @Override

@@ -3,9 +3,9 @@ public class MainMenu {
     public static void main(String[] args) {
         EngineData engine = new EngineData();
 //        testing transform class
-        Transform.get_source_table("source.xml", engine);
-        Transform.get_target_table("target.xml", engine);
-        Transform.get_transformation("target.xml", engine);
+        TransformEngine.init_source_table("source.xml", engine);
+        TransformEngine.init_target_table("target.xml", engine);
+        TransformEngine.init_transformation("url1_json.xml", engine);
 
         System.out.println(engine);
 
@@ -14,7 +14,7 @@ public class MainMenu {
         ConnectionDB connectionDB = new ConnectionDB();
         connectionDB.connectToDB();
 
-        Transform.run_transformation(engine,connectionDB);
+        TransformEngine.run_transformation(engine,connectionDB);
 
     }
 }

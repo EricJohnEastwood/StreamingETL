@@ -11,9 +11,9 @@ import java.lang.reflect.Method;
 
 
 
-public class Transform {
+public class TransformEngine {
 
-    public static void get_source_table(String filename, EngineData engine) {
+    public static void init_source_table(String filename, EngineData engine) {
         try{
             String tableName;
             ArrayList<String> columnName = new ArrayList<String>();
@@ -45,7 +45,7 @@ public class Transform {
         }
     }
 
-    public static void get_target_table(String filename, EngineData engine) {
+    public static void init_target_table(String filename, EngineData engine) {
         try{
             String tableName;
             ArrayList<String> columnName = new ArrayList<String>();
@@ -76,13 +76,14 @@ public class Transform {
 
     }
 
-    public static void get_transformation(String filename, EngineData engine) {
+    public static void init_transformation(String filename, EngineData engine) {
         try {
+            //TODO: transformation_rule loading into engine
             DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
             DocumentBuilder builder=factory.newDocumentBuilder();
             Document document=builder.parse(new File("./src/main/resources/" + filename));
 
-            NodeList transformationSteps = document.getElementsByTagName("transformationStep");
+            NodeList transformationSteps = document.getElementsByTagName("transformations");
 
             for(int i=0; i<transformationSteps.getLength(); i++){
                 Element eElement = (Element) transformationSteps.item(i);
@@ -109,43 +110,49 @@ public class Transform {
     public static void run_transformation(EngineData engine, ConnectionDB connectionDB) {
         try {
             System.out.println("running a transformation");
-
-            String table_name = engine.getSourceTable().getTableName();
+//
+            SourceTable source_table = engine.getSourceTable();
             String uid = "Date_Time";
             String[] class_method_str;
 
             // Get one row from source data dump
-            String selectCommand = GenInstructionDB.select_one_instruction(table_name, uid);
-            SourceTable table_for_transform = connectionDB.selectFromTable(selectCommand,engine);
+//            String selectCommand = GenInstructionDB.select_one_instruction(table_name, uid);
+//            SourceTable table_for_transform = connectionDB.selectFromTable(selectCommand,engine);
+            SourceRow source_row = source_table.select_top_row(connectionDB);
 
 
-            Transformations transformation_to_run = engine.getOneTransformation(table_for_transform.getKey());
+            Transformations transformation_to_run = engine.getOneTransformation(source_row.getKey());
 
-            System.out.println(table_for_transform);
-            System.out.println(transformation_to_run);
+            TargetTable target_table = engine.getTargetTable();
+            TargetRow target_row = new TargetRow(target_table);
+            transformation_to_run.run(source_row, target_row);
 
-            try {
-                for (int i = 0; i < transformation_to_run.getSize(); i++) {
-                    class_method_str = transformation_to_run.getTransformationTypesModule(i).split("\\.");
-                    Class cls = Class.forName(class_method_str[0]);
-                    Object obj = cls.newInstance();
-                    Method method = cls.getDeclaredMethod(class_method_str[1], String.class);
-                    method.invoke(obj, table_for_transform.getData());
+            target_table.insert_one_row(target_row, connectionDB);
 
-                }
-            } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Testing failed");
-                return;
-
-            }
+//            try {
+//                for (int i = 0; i < transformation_to_run.getSize(); i++) {
+//                    class_method_str = transformation_to_run.getTransformationTypesModule(i).split("\\.");
+//                    Class cls = Class.forName(class_method_str[0]);
+//                    Object obj = cls.newInstance();
+//                    Method method = cls.getDeclaredMethod(class_method_str[1], String.class);
+//                    method.invoke(obj, table_for_transform.getData());
+//
+//                }
+//            } catch (ArrayIndexOutOfBoundsException e) {
+//                System.out.println("Testing failed");
+//                return;
+//
+//            }
             System.out.println("Testing successful");
 
             // Delete transformed row from source data dump
-            String deleteCommand = GenInstructionDB.delete_instruction(table_name, uid, table_for_transform.getColumnName().get(2));
-            System.out.println(deleteCommand);
-            connectionDB.deleteFromTable(deleteCommand);
+//            String deleteCommand = GenInstructionDB.delete_instruction(table_name, uid, table_for_transform.getColumnName().get(2));
+//            System.out.println(deleteCommand);
+//            connectionDB.deleteFromTable(deleteCommand);
+            source_table.delete_row(connectionDB, source_row);
 
             System.out.println("Exiting thread");
+
         } catch (Exception e) {
             System.out.println(e);
             System.out.println("Couldn't run the thread.");

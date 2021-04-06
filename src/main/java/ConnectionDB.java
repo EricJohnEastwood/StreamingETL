@@ -6,7 +6,7 @@ public class ConnectionDB {
     static final String DB_URL = "jdbc:mysql://localhost:3306/ETL";
 
     static final String USER = "root";
-    static final String PASS = "";
+    static final String PASS = "srihari";
 
     public Connection conn;
     public Statement stmt;
@@ -100,7 +100,7 @@ public class ConnectionDB {
         }
     }
 
-    public SourceTable selectFromTable(String selectCommand, EngineData engine) {
+    public SourceRow selectFromTable(String selectCommand, SourceTable sourceTable) {
         try {
             conn.setAutoCommit(false);
             stmt = conn.createStatement();
@@ -110,9 +110,10 @@ public class ConnectionDB {
             ResultSetMetaData rsMetaData = rs.getMetaData();
             String tableName = rsMetaData.getTableName(4);
             ArrayList<String> columnValues = new ArrayList<String>();
+            SourceRow source_row = new SourceRow(sourceTable);
 
             if(rs.next()) {
-                for (int i = 2; i <= engine.getSourceTable().getColumnName().size()+1; i++) { // indexing starts from 1
+                for (int i = 2; i <= sourceTable.getColumnName().size()+1; i++) { // indexing starts from 1
                     columnValues.add(rs.getString(i));
                     System.out.println(rs.getString(i));
                 }
@@ -123,7 +124,8 @@ public class ConnectionDB {
             conn.commit();
             stmt.close();
             System.out.println(selectCommand);
-            return new SourceTable(tableName,columnValues,"","");
+            source_row.setRow(columnValues);
+            return source_row;
         } catch(Exception se){
             se.printStackTrace();
         }

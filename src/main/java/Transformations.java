@@ -6,17 +6,20 @@ public class Transformations {
     private String url;
     private String data_type;
     private ArrayList<String> transformationTypesModule;
+    private TransformationRule transformation_rule;
 
     public Transformations() {
         this.url = "";
         this.data_type = "";
         this.transformationTypesModule = new ArrayList<String>();
+        this.transformation_rule = new TransformationRule1();
     }
 
     public  Transformations(String url, String data_type, ArrayList<String> transformationTypesModule) {
         this.url = url;
         this.data_type = data_type;
         this.transformationTypesModule = transformationTypesModule;
+        this.transformation_rule = new TransformationRule1();
     }
 
     public String getUrl() {
@@ -71,5 +74,13 @@ public class Transformations {
                 ", data_type='" + data_type + '\'' +
                 ", transformationTypesModule=" + transformationTypesModule +
                 '}';
+    }
+
+    public void run(SourceRow sourceRow, TargetRow targetRow){
+        targetRow.setRow("Foreign_Exchange_Id", "1");
+        targetRow.setRow("Currency_Format", "CAD");
+        targetRow.setRow("Base_Format", "USD");
+        targetRow.setRow("Currency_Value_Multiplier", "1.5");
+        targetRow.setRow("Country", "Canada");
     }
 }

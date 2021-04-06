@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformations xmlns="http://www.ETL.in">
+    <type>json</type>
+    <URL>https://api.exchangeratesapi.io/latest</URL>
+    <transformation-rule>TransformationRule1</transformation-rule>
+    <transformation>Base_Format:(data[source],single,value)</transformation>
+    <transformation>Currency_Format:(data[quotes],multiple,key)</transformation>
+    <transformation>Currency_Value_Multiplier:(data[quotes],multiple,value)</transformation>
+</transformations>
