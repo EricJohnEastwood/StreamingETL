@@ -1,10 +1,1 @@
-/Users/ericjohn/Desktop/DataModelling/FinalProject/src/main/java/EngineData.java
-/Users/ericjohn/Desktop/DataModelling/FinalProject/src/main/java/MainMenu.java
-/Users/ericjohn/Desktop/DataModelling/FinalProject/src/main/java/SourceTable.java
-/Users/ericjohn/Desktop/DataModelling/FinalProject/src/main/java/Transform.java
-/Users/ericjohn/Desktop/DataModelling/FinalProject/src/main/java/TransformMenu.java
-/Users/ericjohn/Desktop/DataModelling/FinalProject/src/main/java/GenInstructionDB.java
-/Users/ericjohn/Desktop/DataModelling/FinalProject/src/main/java/TargetTable.java
-/Users/ericjohn/Desktop/DataModelling/FinalProject/src/main/java/ConnectionDB.java
-/Users/ericjohn/Desktop/DataModelling/FinalProject/src/main/java/Transformations.java
-/Users/ericjohn/Desktop/DataModelling/FinalProject/src/main/java/CommandLineTransformations.java
+/home/george/IdeaProjects/Streaming_ETL/src/main/java/Engine.java

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd = "http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.ETL.in"
+    xmlns="http://www.ETL.in"
+    elementFormDefault="qualified">
+    
+    <xsd:simpleType name="URL">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="type">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="timestamp">
+        <xsd:restriction base="xsd:dateTime" />
+    </xsd:simpleType>
+
+    <xsd:simpleType name="vendor">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="queryFrequency">
+        <xsd:restriction base="xsd:float" />
+    </xsd:simpleType>
+
+    <xsd:simpleType name="size">
+        <xsd:restriction base="xsd:float">
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="source">
+        <xsd:sequence>
+            <xsd:element name="URL" type="URL" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="type" type="type" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="timestamp" type="timestamp" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="vendor" type="vendor" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="queryFrequency" type="queryFrequency" default="1.0" minOccurs="0" maxOccurs="1"/>
+<!--            query frequency in seconds-->
+            <xsd:element name="size" type="size" default = "5" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="sources">
+        <xsd:sequence>
+            <xsd:element name="source" type="source" minOccurs="1" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sources" type="sources"/>
+
+</xsd:schema>
