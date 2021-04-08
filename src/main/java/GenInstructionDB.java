@@ -24,8 +24,8 @@ public class GenInstructionDB {
         return s;
     }
 
-    public static String select_one_instruction(String table_name, String date_time) {
-        return "SELECT * FROM " + table_name + " WHERE " + date_time + " = (SELECT MIN(" + date_time + ") FROM " + table_name + ")";
+    public static String select_one_instruction(String table_name) {
+        return "SELECT * FROM " + table_name + " LIMIT 1";
     }
 }
 

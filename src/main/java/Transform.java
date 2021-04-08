@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 public class Transform {
 
-    public static void get_source_table(String filename, EngineData engine) {
+    public static void init_source_table(String filename, EngineData engine) {
         try{
             String tableName;
             ArrayList<String> columnName = new ArrayList<String>();
@@ -45,7 +45,7 @@ public class Transform {
         }
     }
 
-    public static void get_target_table(String filename, EngineData engine) {
+    public static void init_target_table(String filename, EngineData engine) {
         try{
             String tableName;
             ArrayList<String> columnName = new ArrayList<String>();
@@ -76,7 +76,7 @@ public class Transform {
 
     }
 
-    public static void get_transformation(String filename, EngineData engine) {
+    public static void init_transformation(String filename, EngineData engine) {
         try {
             DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
             DocumentBuilder builder=factory.newDocumentBuilder();
@@ -111,11 +111,10 @@ public class Transform {
             System.out.println("running a transformation");
 
             String table_name = engine.getSourceTable().getTableName();
-            String uid = "Date_Time";
             String[] class_method_str;
 
             // Get one row from source data dump
-            String selectCommand = GenInstructionDB.select_one_instruction(table_name, uid);
+            String selectCommand = GenInstructionDB.select_one_instruction(table_name);
             SourceTable table_for_transform = connectionDB.selectFromTable(selectCommand,engine);
 
 
@@ -138,11 +137,11 @@ public class Transform {
                 return;
 
             }
-            System.out.println("Testing successful");
+            System.out.println(engine.getSourceTable().getColumnName().get(2));
 
             // Delete transformed row from source data dump
-            String deleteCommand = GenInstructionDB.delete_instruction(table_name, uid, table_for_transform.getColumnName().get(2));
-            System.out.println(deleteCommand);
+            String deleteCommand = GenInstructionDB.delete_instruction(table_name, engine.getSourceTable().getColumnName().get(2), table_for_transform.getColumnName().get(2));
+//            System.out.println(deleteCommand);
             connectionDB.deleteFromTable(deleteCommand);
 
             System.out.println("Exiting thread");
