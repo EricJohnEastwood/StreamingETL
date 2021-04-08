@@ -4,42 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3832f544-ac41-417e-99fd-f6b548139d29" name="Default Changelist" comment="Tested ConnectionDB">
+    <list default="true" id="3832f544-ac41-417e-99fd-f6b548139d29" name="Default Changelist" comment="extract imported from external repo">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinalProject.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/foreignExchangeDB.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sourceDataDump.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CommandLineTransformations.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ConnectionDB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DummyTransformation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EngineData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GenInstructionDB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MainMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SourceTable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TargetTable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Transform.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TransformMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Transformations.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/source.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/target.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FinalProject-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FinalProject-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CommandLineTransformations.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ConnectionDB.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GenInstructionDB.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/MainMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SourceTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TargetTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Transform.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TransformMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Transformations.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/source.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +43,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -83,7 +52,14 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Engine">
+    <configuration name="Engine" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Engine" />
+      <module name="FinalProject" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainMenu" />
       <module name="FinalProject" />
@@ -91,8 +67,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Engine" />
         <item itemvalue="Application.MainMenu" />
         <item itemvalue="Application.MainMenu" />
         <item itemvalue="Application.MainMenu" />
@@ -187,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617373477755</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="extract imported from external repo">
+      <created>1617870111553</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1617870111553</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -213,6 +208,7 @@
     <MESSAGE value="Tested ConnectionDB" />
     <MESSAGE value="Added run_transformation Basic" />
     <MESSAGE value="Added calling method from string" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added calling method from string" />
+    <MESSAGE value="extract imported from external repo" />
+    <option name="LAST_COMMIT_MESSAGE" value="extract imported from external repo" />
   </component>
 </project>

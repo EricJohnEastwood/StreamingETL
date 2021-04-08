@@ -87,11 +87,11 @@ public class Engine{
     public static void data_dump(Element eElement){
 //    need to write function for getting data from URL
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
 //            1.to connect to database
 //INSTRUCTION:Database name is testDB in my case,change accordingly,similarly change username and password according to ur system
 //INSTRUCTION:BEFORE THAT CREATE A DATABASE THAT IS NAMED testDB ON YOUR SYSTEM
-            Connection connect=DriverManager.getConnection("jdbc:mysql://localhost:3306/testDB","root","XXXX");
+            Connection connect=DriverManager.getConnection("jdbc:mysql://localhost:3306/ETL","root","srihari");
             System.out.println("Successfully set up Connection to database\n");
 
 
