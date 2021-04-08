@@ -4,12 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3832f544-ac41-417e-99fd-f6b548139d29" name="Default Changelist" comment="changed the structure; suitable for handling transformations as separate xml files">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="3832f544-ac41-417e-99fd-f6b548139d29" name="Default Changelist" comment="changed jdbc extension">
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinalProject.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/foreignExchangeDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/foreignExchangeDB.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foreignExchangeDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/sql/foreignExchangeDB.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sourceDataDump.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/sql/sourceDataDump.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GenInstructionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GenInstructionDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Row.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Row.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SourceTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SourceTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TargetTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TargetTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TransformEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TransformEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TransformationRule1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TransformationRule1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Transformations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Transformations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/target.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/target.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/url1_json.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/url1_json.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandLineTransformations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CommandLineTransformations.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ConnectionDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ConnectionDB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GenInstructionDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GenInstructionDB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MainMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SourceTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SourceTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/TargetTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TargetTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Transform.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Transformations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Transformations.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/target.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/target.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +51,7 @@
     <option name="PREVIEW_PUSH_PROTECTED_ONLY" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="extract" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,7 +84,12 @@
     <property name="settings.editor.selected.configurable" value="database.main" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/sql" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Tmp">
     <configuration name="MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainMenu" />
       <module name="FinalProject" />
@@ -73,8 +97,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Tmp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Tmp" />
+      <module name="FinalProject" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="foreignExchangeDB.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/src/main/sql/foreignExchangeDB.sql" />
+      <script-mode>FILE</script-mode>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Tmp" />
+        <item itemvalue="Application.MainMenu" />
+        <item itemvalue="Database Script.foreignExchangeDB.sql" />
         <item itemvalue="Application.MainMenu" />
       </list>
     </recent_temporary>
@@ -97,6 +136,8 @@
       <workItem from="1617767379550" duration="493000" />
       <workItem from="1617768216569" duration="1028000" />
       <workItem from="1617865327631" duration="2151000" />
+      <workItem from="1617888774132" duration="22000" />
+      <workItem from="1617892364178" duration="426000" />
     </task>
     <task id="LOCAL-00001" summary="started Transform.get_transformation implementation">
       <created>1616940708899</created>

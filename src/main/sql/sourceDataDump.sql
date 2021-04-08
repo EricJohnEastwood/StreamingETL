@@ -1,0 +1,1 @@
+INSERT INTO `source_data_dump` (`Source_Data_Dump_Id`,`Type`,`Url_To_Loc`,`Date_Time`,`Data`) VALUES (1,"json","url1","2020-07-11 22:34:18","{timestamp: 1610726472,source:USD,quotes:{USDCAD:1.221906,USDCHF:0.821326}}");

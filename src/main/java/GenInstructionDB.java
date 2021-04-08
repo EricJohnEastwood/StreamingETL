@@ -1,7 +1,11 @@
 public class GenInstructionDB {
-    public static String insert_instruction(String table_name, String[] entry_details) {
+    public static String insert_instruction(String table_name, String[] column_details, String[] entry_details) {
         int n = entry_details.length;
-        String s = "INSERT INTO " + table_name + " VALUES ('";
+        String s = "INSERT INTO " + table_name + " ("+column_details[0];
+        for(int i=1; i<n; i++){
+            s = s + "," + column_details[i];
+        }
+        s = s + ") VALUES ('";
         s += entry_details[0] + "'";
         for(int i = 1; i < n; i++){
             s = s + ',' + "'" + entry_details[i] + "'";

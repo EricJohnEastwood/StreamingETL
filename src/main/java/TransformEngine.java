@@ -113,13 +113,12 @@ public class TransformEngine {
 //
             SourceTable source_table = engine.getSourceTable();
             String uid = "Date_Time";
-            String[] class_method_str;
 
             // Get one row from source data dump
 //            String selectCommand = GenInstructionDB.select_one_instruction(table_name, uid);
 //            SourceTable table_for_transform = connectionDB.selectFromTable(selectCommand,engine);
             SourceRow source_row = source_table.select_top_row(connectionDB);
-
+            System.out.println(source_row);
 
             Transformations transformation_to_run = engine.getOneTransformation(source_row.getKey());
 

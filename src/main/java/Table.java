@@ -40,4 +40,13 @@ public class Table {
 //        key.add(this.columnName.get(1));
 //        return key;
 //    }
+
+
+    @Override
+    public String toString() {
+        return "Table{" +
+                "tableName='" + tableName + '\'' +
+                ", columnName=" + columnName +
+                '}';
+    }
 }

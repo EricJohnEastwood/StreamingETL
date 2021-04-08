@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS `foreign_exchange`;
 
 CREATE TABLE `foreign_exchange`
 (
-  `Foreign_Exchange_Id` text,
+  `Foreign_Exchange_Id` int primary key,
   `Currency_Format` text,
   `Base_Format` text,
   `Currency_Value_Multiplier` text,
@@ -16,7 +16,7 @@ DROP TABLE IF EXISTS `source_data_dump`;
 
 CREATE TABLE `source_data_dump`
 (
-  `Source_Data_Id` text,
+  `Source_Data_Dump_Id` int primary key,
   `Type` text,
   `Url_To_Loc` text,
   `Date_Time` datetime DEFAULT NULL,

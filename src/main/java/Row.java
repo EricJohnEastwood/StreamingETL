@@ -50,4 +50,12 @@ public class Row {
     public int size(){
         return row.size();
     }
+
+    @Override
+    public String toString() {
+        return "Row{" +
+                "table=" + table +
+                ", row=" + row +
+                '}';
+    }
 }

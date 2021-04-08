@@ -14,7 +14,7 @@ public class SourceTable extends Table{
         this.storeDataModule = "";
         this.tableInitialized = false;
         this.columnInitialized = false;
-        this.data_time_column = "Data_Time";
+        this.data_time_column = "Date_Time";
         System.out.println("Constructed SourceTable");
     }
 

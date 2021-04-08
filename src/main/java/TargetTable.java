@@ -57,11 +57,14 @@ public class TargetTable extends Table {
 
     public void insert_one_row(TargetRow targetRow, ConnectionDB connectionDB){
         String[] entry_details = new String[targetRow.size()];
+        String[] column_details = new String[targetRow.size()];
         int j=0;
-        for(String i: targetRow.getRow().values()){
-            entry_details[j++] = i;
+        for(String i: targetRow.getRow().keySet()){
+            column_details[j] = i;
+            entry_details[j++] = targetRow.getRow().get(i);
         }
-        String insertCommand = GenInstructionDB.insert_instruction(this.tableName, entry_details);
+        String insertCommand = GenInstructionDB.insert_instruction(this.tableName, column_details, entry_details);
+        System.out.println(insertCommand);
         connectionDB.insertIntoTable(insertCommand);
     }
 

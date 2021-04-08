@@ -25,11 +25,12 @@
 
     <transformationTarget>
         <table>foreign_exchange</table>
-        <column>transformation1-res</column>
-        <column>transformation2-res</column>
-        <column>transformation3-res</column>
-        <column>transformation4-res</column>
-        <column>Date_Time</column>
+        <column>Foreign_Exchange_Id</column>
+        <column>Currency_Format</column>
+        <column>Base_Format</column>
+        <column>Currency_Value_Multiplier</column>
+        <column>Country</column>
+<!--        <column>Date_Time</column>-->
         <store_class>store_in_table.class/function</store_class>
     </transformationTarget>
 </target>

@@ -15,6 +15,8 @@ public class TransformationRule1 implements TransformationRule{
     }
 
     public void transform_json(SourceRow source_row, TargetRow target_row, String mapping) {
+        String data = source_row.getData();
 
+//        targetRow.setRow("Foreign_Exchange_Id", "2");
     }
 }

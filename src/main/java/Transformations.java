@@ -6,7 +6,7 @@ public class Transformations {
     private String url;
     private String data_type;
     private ArrayList<String> transformationTypesModule;
-    private TransformationRule transformation_rule;
+    private TransformationRule1 transformation_rule;
 
     public Transformations() {
         this.url = "";
@@ -73,14 +73,18 @@ public class Transformations {
                 "url='" + url + '\'' +
                 ", data_type='" + data_type + '\'' +
                 ", transformationTypesModule=" + transformationTypesModule +
+                ", transformation_rule=" + transformation_rule +
                 '}';
     }
 
     public void run(SourceRow sourceRow, TargetRow targetRow){
-        targetRow.setRow("Foreign_Exchange_Id", "1");
-        targetRow.setRow("Currency_Format", "CAD");
-        targetRow.setRow("Base_Format", "USD");
-        targetRow.setRow("Currency_Value_Multiplier", "1.5");
-        targetRow.setRow("Country", "Canada");
+//        targetRow.setRow("Foreign_Exchange_Id", "2");
+//        targetRow.setRow("Currency_Format", "CAD");
+//        targetRow.setRow("Base_Format", "USD");
+//        targetRow.setRow("Currency_Value_Multiplier", "1.5");
+//        targetRow.setRow("Country", "Canada");
+        for(String t: transformationTypesModule) {
+            transformation_rule.transform_json(sourceRow, targetRow, t);
+        }
     }
 }
