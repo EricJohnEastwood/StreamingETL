@@ -5,14 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3832f544-ac41-417e-99fd-f6b548139d29" name="Default Changelist" comment="Modified GenInstructionDB">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ConcreteTransformer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Transformer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/file1_csv.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/url1_json.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/url2_json.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/url3_json.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FinalProject-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/FinalProject-1.0-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FinalProject-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/FinalProject-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GenInstructionDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GenInstructionDB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MainMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SourceTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SourceTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TargetTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TargetTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/MainMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617899025986</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added json to map">
+      <created>1617970338841</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1617970338843</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -217,6 +229,7 @@
     <MESSAGE value="Added run_transformation Basic" />
     <MESSAGE value="Added calling method from string" />
     <MESSAGE value="Modified GenInstructionDB" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modified GenInstructionDB" />
+    <MESSAGE value="Added json to map" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added json to map" />
   </component>
 </project>

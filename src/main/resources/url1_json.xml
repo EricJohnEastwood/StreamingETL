@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformations xmlns="http://www.ETL.in">
+    <type>json</type>
+    <URL>https://free.currconv.com/api/v7/convert?q=USD_INR,INR_USD&amp;compact=ultra&amp;apiKey=c0dbece0e1a955a43e02</URL>
+    <transformation-rule>ConcreteTransformation</transformation-rule>
+    <transformation>Base_Format:(data[source],single,value)</transformation>
+    <transformation>Currency_Format:(data[quotes],multiple,key)</transformation>
+    <transformation>Currency_Value_Multiplier:(data[quotes],multiple,value)</transformation>
+</transformations>

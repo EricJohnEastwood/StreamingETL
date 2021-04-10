@@ -60,6 +60,14 @@ public class SourceTable {
         this.tableInitialized = true;
     }
 
+    public void setOneColumn(Integer position,String column_value) {
+        this.columnName.set(position,column_value);
+    }
+
+    public String getOneColumn(Integer position) {
+        return this.columnName.get(position);
+    }
+
     public void setColumnName(ArrayList<String> columnName) {
         this.columnName = columnName;
         this.columnInitialized = true;

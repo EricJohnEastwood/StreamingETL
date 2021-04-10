@@ -1,10 +1,11 @@
-MainMenu.class
-SourceTable.class
-ConnectionDB.class
-Transformations.class
-GenInstructionDB.class
+DummyTransformation.class
 TargetTable.class
 CommandLineTransformations.class
 TransformMenu.class
 Transform.class
 EngineData.class
+MainMenu.class
+SourceTable.class
+ConnectionDB.class
+Transformations.class
+GenInstructionDB.class

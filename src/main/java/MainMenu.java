@@ -1,6 +1,8 @@
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -50,8 +52,9 @@ public class MainMenu {
 
             // it works
             //Map<String, String> map = mapper.readValue(json, new TypeReference<Map<String, String>>() {});
-
             System.out.println(map);
+
+//            System.out.println(mapper.readValue(map.get("rates"), HashMap.class));
 
 
             connectionDB.disconnectFromDB();

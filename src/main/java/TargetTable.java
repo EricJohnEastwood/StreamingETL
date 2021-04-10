@@ -54,6 +54,14 @@ public class TargetTable {
         this.columnInitialized = true;
     }
 
+    public void setOneColumn(Integer position,String column_value) {
+        this.columnName.set(position,column_value);
+    }
+
+    public String getOneColumn(Integer position) {
+        return this.columnName.get(position);
+    }
+
     public void setStoreDataModule(String storeDataModule) {
         this.storeDataModule = storeDataModule;
     }
