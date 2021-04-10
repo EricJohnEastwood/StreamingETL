@@ -12,7 +12,6 @@ import java.lang.reflect.Method;
 
 
 public class Transform {
-
     public static void init_source_table(String filename, EngineData engine) {
         try{
             String tableName;
@@ -82,12 +81,15 @@ public class Transform {
             DocumentBuilder builder=factory.newDocumentBuilder();
             Document document=builder.parse(new File("./src/main/resources/" + filename));
 
-            NodeList transformationSteps = document.getElementsByTagName("transformationStep");
+            NodeList transformationSteps = document.getElementsByTagName("transformationSteps");
 
             for(int i=0; i<transformationSteps.getLength(); i++){
                 Element eElement = (Element) transformationSteps.item(i);
                 String type = eElement.getElementsByTagName("type").item(0).getTextContent();
                 String url = eElement.getElementsByTagName("URL").item(0).getTextContent();
+                String transformerEngine = eElement.getElementsByTagName("transformation-rule").item(0).getTextContent();
+                String datatype = eElement.getElementsByTagName("datatype").item(0).getTextContent();
+
 
                 ArrayList<String> tcs = new ArrayList<String>();
 
@@ -97,7 +99,7 @@ public class Transform {
                     tcs.add(tmp.getTextContent());
                 }
 
-                engine.constructTransformations(url, type, tcs);
+                engine.constructTransformations(url, type, transformerEngine, datatype, tcs);
             }
         }
         catch(Exception e){

@@ -40,12 +40,12 @@ public class EngineData {
         this.target_table.setStoreDataModule(storeDataModule);
     }
 
-    public void constructTransformations(String url, String data_type, ArrayList<String> transformationTypesModule) {
+    public void constructTransformations(String url, String data_type, String transformationEngine,String data_content, ArrayList<String> transformationTypesModule) {
         ArrayList<String> key = new ArrayList<String>();
         key.add(data_type);
         key.add(url);
 
-        Transformations value = new Transformations(url, data_type, transformationTypesModule);
+        Transformations value = new Transformations(url, data_type, transformationEngine, data_content, transformationTypesModule);
 
         this.transformations.put(key, value);
     }

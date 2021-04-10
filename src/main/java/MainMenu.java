@@ -27,7 +27,7 @@ public class MainMenu {
 //        testing transform class
         Transform.init_source_table("source.xml", engine);
         Transform.init_target_table("target.xml", engine);
-        Transform.init_transformation("target.xml", engine);
+        Transform.init_transformation("url1_json.xml", engine);
 
         System.out.println(engine);
 
@@ -38,8 +38,8 @@ public class MainMenu {
 
 //        Transform.run_transformation(engine,connectionDB);
 
-        String requestURL = "https://free.currconv.com/api/v7/convert?q=USD_INR&compact=ultra&apiKey=c0dbece0e1a955a43e02";
-        System.out.println(MainMenu.readStringFromURL(requestURL));
+//        String requestURL = "https://free.currconv.com/api/v7/convert?q=USD_INR&compact=ultra&apiKey=c0dbece0e1a955a43e02";
+//        System.out.println(MainMenu.readStringFromURL(requestURL));
 
         String json = "{\"amount\": \"1.0000\", \"base_currency_code\": \"EUR\", \"base_currency_name\": \"Euro\", \"rates\":{ \"GBP\":{ \"currency_name\":\"Pound sterling\", \"rate\": \"0.8541\", \"rate_for_amount\":\"0.8541\" } }, \"status\": \"success\" , \"updated_date\": \"2020-01-20\"  }";
         System.out.println(json);

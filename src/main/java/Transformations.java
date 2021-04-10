@@ -5,17 +5,23 @@ import java.util.Objects;
 public class Transformations {
     private String url;
     private String data_type;
+    private String transformationEngine;
+    private String data_content;
     private ArrayList<String> transformationTypesModule;
 
     public Transformations() {
         this.url = "";
         this.data_type = "";
+        this.transformationEngine = "";
+        this.data_content = "";
         this.transformationTypesModule = new ArrayList<String>();
     }
 
-    public  Transformations(String url, String data_type, ArrayList<String> transformationTypesModule) {
+    public  Transformations(String url, String data_type, String transformationEngine, String data_content, ArrayList<String> transformationTypesModule) {
         this.url = url;
         this.data_type = data_type;
+        this.transformationEngine = transformationEngine;
+        this.data_content = data_content;
         this.transformationTypesModule = transformationTypesModule;
     }
 
@@ -25,6 +31,10 @@ public class Transformations {
 
     public String getData_type() {
         return this.data_type;
+    }
+
+    public String getTransformationEngine() {
+        return this.transformationEngine;
     }
 
     public Integer getSize() {
@@ -69,6 +79,8 @@ public class Transformations {
         return "Transformations{" +
                 "url='" + url + '\'' +
                 ", data_type='" + data_type + '\'' +
+                ", transformationEngine='" + transformationEngine + '\'' +
+                ", data_content='" + data_content + '\'' +
                 ", transformationTypesModule=" + transformationTypesModule +
                 '}';
     }
