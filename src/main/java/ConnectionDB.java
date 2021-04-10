@@ -123,7 +123,7 @@ public class ConnectionDB {
             conn.commit();
             stmt.close();
             System.out.println(selectCommand);
-            return new SourceTable(tableName,columnValues,"","");
+            return new SourceTable(tableName,columnValues);
         } catch(Exception se){
             se.printStackTrace();
         }

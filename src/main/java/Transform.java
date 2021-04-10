@@ -2,6 +2,7 @@ import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 import javax.xml.parsers.*;
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -16,8 +17,6 @@ public class Transform {
         try{
             String tableName;
             ArrayList<String> columnName = new ArrayList<String>();
-            String urlRunModule;
-            String storeDataModule;
 
             DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
             DocumentBuilder builder=factory.newDocumentBuilder();
@@ -32,10 +31,8 @@ public class Transform {
             for(int i = 0; i < column_list.getLength(); i++) {
                 columnName.add(column_list.item(i).getTextContent());
             }
-            urlRunModule = eElement.getElementsByTagName("data_request").item(0).getTextContent();
-            storeDataModule =  eElement.getElementsByTagName("store_class").item(0).getTextContent();
 
-            engine.constructSourceTable(tableName, columnName, urlRunModule, storeDataModule);
+            engine.constructSourceTable(tableName, columnName);
 
         }
         catch(Exception e){
@@ -113,19 +110,48 @@ public class Transform {
             System.out.println("running a transformation");
 
             String table_name = engine.getSourceTable().getTableName();
-            String[] class_method_str;
 
             // Get one row from source data dump
-            String selectCommand = GenInstructionDB.select_one_instruction(table_name);
-            SourceTable table_for_transform = connectionDB.selectFromTable(selectCommand,engine);
+//            String selectCommand = GenInstructionDB.select_one_instruction(table_name);
+//            SourceTable table_for_transform = connectionDB.selectFromTable(selectCommand,engine);
 
 
-            Transformations transformation_to_run = engine.getOneTransformation(table_for_transform.getKey());
+//            Transformations transformation_to_run = engine.getOneTransformation(table_for_transform.getKey());
+
+
+            // Brute Data Input
+            ArrayList<String> key = new ArrayList<String>();
+            key.add("json");
+            key.add("https://free.currconv.com/api/v7/convert?q=USD_INR,INR_USD&compact=ultra&apiKey=c0dbece0e1a955a43e02");
+            Transformations transformation_to_run = engine.getOneTransformation(key);
+            ArrayList<String> column_value = new ArrayList<String>();
+            column_value.add("json");
+            column_value.add("https://free.currconv.com/api/v7/convert?q=USD_INR,INR_USD&compact=ultra&apiKey=c0dbece0e1a955a43e02");
+            column_value.add("2022-01-31 00:38:00");
+            column_value.add("{\"USD_INR\": \"74.7297\"}");
+            SourceTable table_for_transform = new SourceTable("source_data_dump",column_value);
+            // End Brute Data Input
 
             System.out.println(table_for_transform);
             System.out.println(transformation_to_run);
 
-            try {
+
+            // Delete transformed row from source data dump
+
+//            String deleteCommand = GenInstructionDB.delete_instruction(table_name, engine.getSourceTable().getColumnName().get(2), table_for_transform.getColumnName().get(2));
+//            connectionDB.deleteFromTable(deleteCommand);
+
+            System.out.println("Exiting thread");
+        } catch (Exception e) {
+            System.out.println(e);
+            System.out.println("Couldn't run the thread.");
+        }
+    }
+
+    public static void run_one_transformation(EngineData engine, ConnectionDB connectionDB, SourceTable table_for_transform, Transformations transformation_to_run) {
+        String[] class_method_str;
+
+        try {
                 for (int i = 0; i < transformation_to_run.getSize(); i++) {
                     class_method_str = transformation_to_run.getTransformationTypesModule(i).split("\\.");
                     Class cls = Class.forName(class_method_str[0]);
@@ -134,22 +160,17 @@ public class Transform {
                     method.invoke(obj, table_for_transform.getData());
 
                 }
-            } catch (ArrayIndexOutOfBoundsException e) {
+            } catch (ArrayIndexOutOfBoundsException | ClassNotFoundException | NoSuchMethodException e) {
                 System.out.println("Testing failed");
                 return;
 
-            }
-            System.out.println(engine.getSourceTable().getColumnName().get(2));
-
-            // Delete transformed row from source data dump
-            String deleteCommand = GenInstructionDB.delete_instruction(table_name, engine.getSourceTable().getColumnName().get(2), table_for_transform.getColumnName().get(2));
-//            System.out.println(deleteCommand);
-            connectionDB.deleteFromTable(deleteCommand);
-
-            System.out.println("Exiting thread");
-        } catch (Exception e) {
-            System.out.println(e);
-            System.out.println("Couldn't run the thread.");
+            } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
         }
+
     }
 }

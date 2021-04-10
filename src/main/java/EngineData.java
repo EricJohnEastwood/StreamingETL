@@ -27,11 +27,9 @@ public class EngineData {
         return transformations.get(key);
     }
 
-    public void constructSourceTable(String tableName, ArrayList<String> columnName, String urlRunModule, String storeDataModule) {
+    public void constructSourceTable(String tableName, ArrayList<String> columnName) {
         this.source_table.setTableName(tableName);
         this.source_table.setColumnName(columnName);
-        this.source_table.setUrlRunModule(urlRunModule);
-        this.source_table.setStoreDataModule(storeDataModule);
     }
 
     public void constructTargetTable(String tableName, ArrayList<String> columnName, String storeDataModule) {
@@ -40,7 +38,7 @@ public class EngineData {
         this.target_table.setStoreDataModule(storeDataModule);
     }
 
-    public void constructTransformations(String url, String data_type, String transformationEngine,String data_content, ArrayList<String> transformationTypesModule) {
+    public void constructTransformations(String url, String data_type, String transformationEngine, String data_content, ArrayList<String> transformationTypesModule) {
         ArrayList<String> key = new ArrayList<String>();
         key.add(data_type);
         key.add(url);
