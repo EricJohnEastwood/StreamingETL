@@ -81,7 +81,6 @@ public class ConcreteTransformer {
                 System.out.println(transformations.getTransformationTypesModule(tno));
             }
         }
-
     }
 
     public HashMap<String, String> transform_to_json(String source_row) throws IOException {

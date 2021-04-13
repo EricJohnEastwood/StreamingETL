@@ -17,8 +17,6 @@
         <column>type</column>
         <column>URL</column>
         <column>Date_Time</column>
-        <data_request>get_data_from_URL.class/function</data_request>
         <column>data_request</column>
-        <store_class>store_in_table.class/function</store_class>
     </sourceTarget>
 </sources>

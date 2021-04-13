@@ -25,7 +25,7 @@
 
     <transformationTarget>
         <table>foreign_exchange</table>
-        <column>transformation1-res</column>
+        <column>Currency_Format</column>
         <column>transformation2-res</column>
         <column>transformation3-res</column>
         <column>transformation4-res</column>
