@@ -4,34 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3832f544-ac41-417e-99fd-f6b548139d29" name="Default Changelist" comment="run transformation implementation left">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+    <list default="true" id="3832f544-ac41-417e-99fd-f6b548139d29" name="Default Changelist" comment="run transformation implementation done; transformer implementation left">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/foreignExchangeDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/foreignExchangeDB.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CommandLineTransformations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CommandLineTransformations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ConcreteTransformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ConcreteTransformer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ConnectionDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EngineData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EngineData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Transform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Transformations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Transformations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Transformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Transformer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FinalProject-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FinalProject-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CommandLineTransformations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CommandLineTransformations.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ConnectionDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ConnectionDB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SourceTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SourceTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TargetTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TargetTable.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Transform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Transform.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Transformations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Transformations.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/source.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/source.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/target.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +101,7 @@
       <updated>1616822531822</updated>
       <workItem from="1616994970253" duration="11702000" />
       <workItem from="1617453816850" duration="3300000" />
-      <workItem from="1618657326117" duration="9726000" />
+      <workItem from="1618657326117" duration="12316000" />
     </task>
     <task id="LOCAL-00001" summary="started Transform.get_transformation implementation">
       <created>1616940708899</created>
@@ -250,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618056376749</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="run transformation implementation done; transformer implementation left">
+      <created>1618667510049</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1618667510049</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,6 +295,7 @@
     <MESSAGE value="Modified GenInstructionDB" />
     <MESSAGE value="Added json to map" />
     <MESSAGE value="Added ConcreteTransformer + generic functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added ConcreteTransformer + generic functions" />
+    <MESSAGE value="run transformation implementation done; transformer implementation left" />
+    <option name="LAST_COMMIT_MESSAGE" value="run transformation implementation done; transformer implementation left" />
   </component>
 </project>

@@ -22,9 +22,10 @@ public class MainMenu {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, Exception {
         EngineData engine = new EngineData();
 
+        Transform.init_transformers(engine);
         Transform.init_source_table("source.xml", engine);
         Transform.init_target_table("target.xml", engine);
         Transform.init_transformation("url1_json.xml", engine);
@@ -35,7 +36,7 @@ public class MainMenu {
 //        Extract.run_extract("source.xml",engine, connectionDB);
 
         Transform.run_transformation(engine,connectionDB);
-//
+
 ////        String requestURL = "https://free.currconv.com/api/v7/convert?q=USD_INR&compact=ultra&apiKey=c0dbece0e1a955a43e02";
 ////        System.out.println(MainMenu.readStringFromURL(requestURL));
 //

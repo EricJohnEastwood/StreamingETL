@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 // TODO: Make this class an implementation of ConcreteTransformer
-public class ConcreteTransformer {
+public class ConcreteTransformer implements Transformer{
     ArrayList<String> string_key;
     ArrayList<String> string_value;
     ArrayList<Integer> int_key;
@@ -64,8 +64,8 @@ public class ConcreteTransformer {
     }
 
 
-
-    public void transformer_for_json(String source_row, TargetTable target_table, Transformations transformations) throws IOException {
+    @Override
+    public void transform_for_json(String source_row, TargetTable target_table, Transformations transformations) throws IOException {
 //        ArrayList<String> data_format = this.getDatatype();
 //        if(data_format.get(0).equals("simple") && data_format.get(1).equals("multiple") && data_format.get(2).equals("same") ) {
         String data_content = transformations.getData_content();
@@ -73,6 +73,20 @@ public class ConcreteTransformer {
         if(data_format[0].equals("simple") && data_format[1].equals("multiple") && data_format[2].equals("same") ) {
             transformer_for_simple_multiple_same(source_row, target_table, transformations);
         }
+    }
+
+    @Override
+    public void transform_csv(String source_row, TargetTable target_row) {
+    }
+
+    @Override
+    public void transform_xml(String source_row, TargetTable target_row) {
+
+    }
+
+    @Override
+    public void transform_for_json(String source_row, TargetTable target_row) {
+
     }
 
     public void transformer_for_simple_multiple_same(String source_row, TargetTable target_table, Transformations transformations) throws IOException {
@@ -123,6 +137,11 @@ public class ConcreteTransformer {
             return new String[]{value};
         }
         return value.split(delimiter);
+    }
+
+    @Override
+    public String toString() {
+        return "ConcreteTransformer{}";
     }
 
 }
