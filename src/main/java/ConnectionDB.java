@@ -100,7 +100,7 @@ public class ConnectionDB {
         }
     }
 
-    public SourceTable selectFromTable(String selectCommand, EngineData engine) {
+    public SourceTable selectFromSourceTable(String selectCommand, EngineData engine) {
         try {
             conn.setAutoCommit(false);
             stmt = conn.createStatement();

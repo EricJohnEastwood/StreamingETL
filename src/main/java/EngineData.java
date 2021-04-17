@@ -32,10 +32,9 @@ public class EngineData {
         this.source_table.setColumnName(columnName);
     }
 
-    public void constructTargetTable(String tableName, ArrayList<String> columnName, String storeDataModule) {
+    public void constructTargetTable(String tableName, ArrayList<String> columnName) {
         this.target_table.setTableName(tableName);
         this.target_table.setColumnName(columnName);
-        this.target_table.setStoreDataModule(storeDataModule);
     }
 
     public void constructTransformations(String url, String data_type, String transformationEngine, String data_content, ArrayList<String> transformationTypesModule) {

@@ -60,9 +60,8 @@ public class Transform {
             for(int i = 0; i < column_list.getLength(); i++) {
                 columnName.add(column_list.item(i).getTextContent());
             }
-            storeDataModule = eElement.getElementsByTagName("store_class").item(0).getTextContent();
 
-            engine.constructTargetTable(tableName, columnName, storeDataModule);
+            engine.constructTargetTable(tableName, columnName);
 
         }
         catch(Exception e){
