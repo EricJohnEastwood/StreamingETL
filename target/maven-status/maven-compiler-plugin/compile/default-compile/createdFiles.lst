@@ -1,11 +1,13 @@
+ConcreteTransformer.class
 DummyTransformation.class
-TargetTable.class
 CommandLineTransformations.class
+TargetTable.class
+Transformer.class
 TransformMenu.class
 Transform.class
 EngineData.class
 MainMenu.class
-SourceTable.class
 ConnectionDB.class
+SourceTable.class
 Transformations.class
 GenInstructionDB.class

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+// TODO: Make this class an implementation of ConcreteTransformer
 public class ConcreteTransformer {
     ArrayList<String> string_key;
     ArrayList<String> string_value;
@@ -65,8 +66,11 @@ public class ConcreteTransformer {
 
 
     public void transformer_for_json(String source_row, TargetTable target_table, Transformations transformations) throws IOException {
-        ArrayList<String> data_format = this.getDatatype();
-        if(data_format.get(0).equals("simple") && data_format.get(1).equals("multiple") && data_format.get(2).equals("same") ) {
+//        ArrayList<String> data_format = this.getDatatype();
+//        if(data_format.get(0).equals("simple") && data_format.get(1).equals("multiple") && data_format.get(2).equals("same") ) {
+        String data_content = transformations.getData_content();
+        String[] data_format = data_content.split(":");
+        if(data_format[0].equals("simple") && data_format[1].equals("multiple") && data_format[2].equals("same") ) {
             transformer_for_simple_multiple_same(source_row, target_table, transformations);
         }
     }

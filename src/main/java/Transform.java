@@ -104,6 +104,10 @@ public class Transform {
         }
     }
 
+    public static void init_transformers(EngineData engine) throws Exception{
+        engine.constructTransformer("ConcreteTransformer");
+    }
+
     public static void run_transformation(EngineData engine, ConnectionDB connectionDB) {
         try {
             System.out.println("running a transformation");
@@ -134,8 +138,10 @@ public class Transform {
             System.out.println(table_for_transform);
             System.out.println(transformation_to_run);
 
+            // Running the transform
+            run_one_transformation(engine, connectionDB, table_for_transform, transformation_to_run);
 
-            // Delete transformed row from source data dump
+            // TODO: Delete transformed row from source data dump
 
 //            String deleteCommand = GenInstructionDB.delete_instruction(table_name, engine.getSourceTable().getColumnName().get(2), table_for_transform.getColumnName().get(2));
 //            connectionDB.deleteFromTable(deleteCommand);
@@ -147,29 +153,35 @@ public class Transform {
         }
     }
 
-    public static void run_one_transformation(EngineData engine, ConnectionDB connectionDB, SourceTable table_for_transform, Transformations transformation_to_run) {
-        String[] class_method_str;
-
-        try {
-                for (int i = 0; i < transformation_to_run.getSize(); i++) {
-                    class_method_str = transformation_to_run.getTransformationTypesModule(i).split("\\.");
-                    Class cls = Class.forName(class_method_str[0]);
-                    Object obj = cls.newInstance();
-                    Method method = cls.getDeclaredMethod(class_method_str[1], String.class);
-                    method.invoke(obj, table_for_transform.getData());
-
-                }
-            } catch (ArrayIndexOutOfBoundsException | ClassNotFoundException | NoSuchMethodException e) {
-                System.out.println("Testing failed");
-                return;
-
-            } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
+    public static void run_one_transformation(EngineData engine, ConnectionDB connectionDB, SourceTable table_for_transform, Transformations transformation_to_run) throws Exception{
+//        String[] class_method_str;
+        Transformer transformer = engine.getTransformer(transformation_to_run.getTransformationEngine());
+        TargetTable target_rows = new TargetTable(engine.getTargetTable().getTableName());
+        if(transformation_to_run.getData_type().equals("json")) {
+            transformer.transform_for_json(table_for_transform.getData(), target_rows, transformation_to_run);
         }
+        System.out.println(target_rows);
+        //TODO: Store the target rows in the target data warehouse
+//        try {
+//                for (int i = 0; i < transformation_to_run.getSize(); i++) {
+//                    class_method_str = transformation_to_run.getTransformationTypesModule(i).split("\\.");
+//                    Class cls = Class.forName(class_method_str[0]);
+//                    Object obj = cls.newInstance();
+//                    Method method = cls.getDeclaredMethod(class_method_str[1], String.class);
+//                    method.invoke(obj, table_for_transform.getData());
+//
+//                }
+//            } catch (ArrayIndexOutOfBoundsException | ClassNotFoundException | NoSuchMethodException e) {
+//                System.out.println("Testing failed");
+//                return;
+//
+//            } catch (IllegalAccessException e) {
+//            e.printStackTrace();
+//        } catch (InstantiationException e) {
+//            e.printStackTrace();
+//        } catch (InvocationTargetException e) {
+//            e.printStackTrace();
+//        }
 
     }
 }

@@ -9,6 +9,14 @@ public class Transformations {
     private String data_content;
     private ArrayList<String> transformationTypesModule;
 
+    public String getData_content() {
+        return data_content;
+    }
+
+    public void setData_content(String data_content) {
+        this.data_content = data_content;
+    }
+
     public Transformations() {
         this.url = "";
         this.data_type = "";

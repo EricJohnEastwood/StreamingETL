@@ -20,5 +20,5 @@ CREATE TABLE `source_data_dump`
   `Type` text,
   `Url_To_Loc` text,
   `Date_Time` datetime DEFAULT NULL,
-  `Data` text,
+  `Data` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

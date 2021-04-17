@@ -5,6 +5,7 @@ import java.util.HashMap;
 public class EngineData {
     private SourceTable source_table;
     private TargetTable target_table;
+    private HashMap<String, Transformer> transformers;
     private HashMap<ArrayList<String>,Transformations> transformations;
 
 
@@ -12,7 +13,19 @@ public class EngineData {
         this.source_table = new SourceTable();
         this.target_table = new TargetTable();
         this.transformations = new HashMap<ArrayList<String>,Transformations>();
+        this.transformers = new HashMap<String, Transformer>();
+    }
 
+    public HashMap<String, Transformer> getTransformers() {
+        return transformers;
+    }
+
+    public Transformer getTransformer(String key) {
+        return transformers.get(key);
+    }
+
+    public void setTransformers(HashMap<String, Transformer> transformers) {
+        this.transformers = transformers;
     }
 
     public SourceTable getSourceTable() {
@@ -45,6 +58,12 @@ public class EngineData {
         Transformations value = new Transformations(url, data_type, transformationEngine, data_content, transformationTypesModule);
 
         this.transformations.put(key, value);
+    }
+
+    public void constructTransformer(String key) throws Exception{
+        Class cls = Class.forName(key);
+        Transformer transformer = (Transformer) cls.getDeclaredConstructor().newInstance();
+        this.transformers.put(key, transformer);
     }
 
     @Override
