@@ -27,6 +27,10 @@ public class GenInstructionDB {
     public static String select_one_instruction(String table_name) {
         return "SELECT * FROM " + table_name + " LIMIT 1";
     }
+
+    public static  String select_count_instruction(String table_name) {
+        return "SELECT count(*) FROM " + table_name;
+    }
 }
 
 

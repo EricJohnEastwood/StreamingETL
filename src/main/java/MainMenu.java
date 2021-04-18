@@ -33,9 +33,9 @@ public class MainMenu {
         ConnectionDB connectionDB = new ConnectionDB();
         connectionDB.connectToDB();
 
-//        Extract.run_extract("source.xml",engine, connectionDB);
+        Extract.construct_extract_thread("source.xml",engine, connectionDB);
 
-        Transform.run_transformation(engine,connectionDB);
+//        Transform.run_transformation(engine,connectionDB);
 
 ////        String requestURL = "https://free.currconv.com/api/v7/convert?q=USD_INR&compact=ultra&apiKey=c0dbece0e1a955a43e02";
 ////        System.out.println(MainMenu.readStringFromURL(requestURL));

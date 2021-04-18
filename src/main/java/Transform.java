@@ -3,16 +3,41 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.*;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 import java.sql.*;
 import java.lang.reflect.Method;
 
+class PeriodicTransformThread extends Thread {
+    private boolean run_thread;
+    private final EngineData engine;
+    private final ConnectionDB connectionDB;
 
+    public PeriodicTransformThread(EngineData engine, ConnectionDB connectionDB){
+        this.run_thread = false;
+        this.engine = engine;
+        this.connectionDB = connectionDB;
+        System.out.println("Construction Completed");
+    }
+    @Override
+    public void run() {
+        this.run_thread = true;
+        System.out.println("ThreadExecution");
+        Transform.run_transform(this.engine, this.connectionDB);
+        this.run_thread = false;
+    }
+
+    public void stop_thread() {
+        this.run_thread = false;
+    }
+
+    public boolean isRun_thread() {
+        return this.run_thread;
+    }
+}
 
 public class Transform {
+    private static PeriodicTransformThread pt_thread;
+
     public static void init_source_table(String filename, EngineData engine) {
         try{
             String tableName;
@@ -108,6 +133,29 @@ public class Transform {
         engine.constructTransformer("ConcreteTransformer");
     }
 
+    public static void construct_transform_thread(EngineData engine, ConnectionDB connectionDB) {
+        if(pt_thread.isRun_thread()) {
+            System.out.println("Thread already executing");
+        }
+        else {
+            pt_thread = new PeriodicTransformThread(engine, connectionDB);
+            pt_thread.start();
+        }
+    }
+
+    public static void run_transform(EngineData engine, ConnectionDB connectionDB) {
+        Integer steps = 0;
+
+        String check_non_empty_command = GenInstructionDB.select_count_instruction(engine.getSourceTable().getTableName());
+        steps = connectionDB.checkIfNonEmptyTable(check_non_empty_command);
+
+        if(steps > 0) {
+            for( ; steps > 0; steps--) {
+                run_transformation(engine,connectionDB);
+            }
+        }
+    }
+
     public static void run_transformation(EngineData engine, ConnectionDB connectionDB) {
         try {
             System.out.println("running a transformation");
@@ -139,11 +187,11 @@ public class Transform {
             System.out.println(transformation_to_run);
 
             // Running the transform
-            run_one_transformation(engine, connectionDB, table_for_transform, transformation_to_run);
+//            run_one_transformation(engine, connectionDB, table_for_transform, transformation_to_run);
 
             // TODO: Delete transformed row from source data dump
 
-//            String deleteCommand = GenInstructionDB.delete_instruction(table_name, engine.getSourceTable().getColumnName().get(2), table_for_transform.getColumnName().get(2));
+//            String deleteCommand = GenInstructionDB.delete_instruction(table_name, engine.getSourceTable().getColumnName().get(0), table_for_transform.getColumnName().get(0));
 //            connectionDB.deleteFromTable(deleteCommand);
 
             System.out.println("Exiting thread");

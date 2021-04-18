@@ -26,7 +26,7 @@ class PeriodicExtract extends TimerTask{
     }
     @Override
     public void run() {
-        if(this.run_thread == true) {
+        if(this.run_thread) {
             System.out.println("ThreadExecution");
             Extract.data_dump(this.eElement, this.engine, this.connectionDB);
         }
@@ -91,9 +91,9 @@ public class Extract {
 
             String[] entry_details = new String[5];
             Date date=Calendar.getInstance().getTime();
-            DateFormat date_format = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+            DateFormat date_format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             String date_time = date_format.format(date);
-//            java date object needs to be instantiated for evry time ,it does not update already existing object
+
 
             entry_details[1] = eElement.getElementsByTagName("type").item(0).getTextContent();
             entry_details[2] = eElement.getElementsByTagName("URL").item(0).getTextContent();
@@ -118,7 +118,7 @@ public class Extract {
     }
 
 
-    public static void run_extract(String filename, EngineData engine, ConnectionDB connectionDB) {
+    public static void construct_extract_thread(String filename, EngineData engine, ConnectionDB connectionDB) {
         try{
             ArrayList<PeriodicExtract> pe_threads = new ArrayList<PeriodicExtract>();
 

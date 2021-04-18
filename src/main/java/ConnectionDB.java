@@ -6,7 +6,7 @@ public class ConnectionDB {
     static final String DB_URL = "jdbc:mysql://localhost:3306/ETL";
 
     static final String USER = "root";
-    static final String PASS = "srihari";
+    static final String PASS = "";
 
     public Connection conn;
     public Statement stmt;
@@ -135,6 +135,44 @@ public class ConnectionDB {
             }
         }
         return null;
+    }
+
+    public Integer checkIfNonEmptyTable(String selectCommand) {
+        try {
+            Integer non_empty = -1;
+            conn.setAutoCommit(false);
+            stmt = conn.createStatement();
+
+            ResultSet rs = null;
+            rs = stmt.executeQuery(selectCommand);
+
+            if(rs.next()) {
+                try {
+                    non_empty = Integer.parseInt(rs.getString(1));
+                } catch (NumberFormatException e) {
+                    non_empty = -1;
+                }
+
+            }
+            else {
+                non_empty = -1;
+            }
+
+            conn.commit();
+            conn.close();
+            return non_empty;
+
+        } catch(Exception se){
+            se.printStackTrace();
+        }
+        finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se2){
+            }
+        }
+        return -1;
     }
 
 }
