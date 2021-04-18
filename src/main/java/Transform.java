@@ -229,7 +229,7 @@ public class Transform {
             System.out.println(transformation_to_run);
 
             // Running the transform
-//            run_one_transformation(engine, connectionDB, table_for_transform, transformation_to_run);
+            run_one_transformation(engine, connectionDB, table_for_transform, transformation_to_run);
 
             // TODO: Delete transformed row from source data dump
 

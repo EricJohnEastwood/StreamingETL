@@ -97,6 +97,12 @@ public class ConcreteTransformer implements Transformer{
             String value = entry.getValue();
             for(int tno = 0; tno < transformations.getSize(); tno++) {
                 System.out.println(transformations.getTransformationTypesModule(tno));
+                String[] trans_details = transformations.getTransformationTypesModule(tno).split(" ");
+                //TODO: If else statements for methods
+                Class cls = this.getClass();
+                Method method = cls.getDeclaredMethod(trans_details[1], String.class);
+                method.invoke(obj, table_for_transform.getData());
+//                if(trans_details[2] == "")
             }
         }
     }
@@ -116,11 +122,11 @@ public class ConcreteTransformer implements Transformer{
         target_table.setOneColumn(column, source_data.get(value));
     }
 
-    public void add_value_to_target(String value, Integer column, TargetTable target_table) {
+    public void add_value_to_target(Integer korv, Integer index, Integer column, TargetTable target_table) {
         target_table.setOneColumn(column,value);
     }
 
-    public String replace_from_dict(String key, HashMap<String, String> dict) {
+    public String replace_from_dict(Integer korv, Integer index, HashMap<String, String> dict) {
         return dict.get(key);
     }
 
@@ -132,7 +138,7 @@ public class ConcreteTransformer implements Transformer{
         return dict.get(key);
     }
 
-    public String[] split_string(String value, String delimiter) {
+    public String[] split_string(Integer korv, HashMap<String, String> rows, String delimiter) {
         if(delimiter.equals("none")) {
             return new String[]{value};
         }
