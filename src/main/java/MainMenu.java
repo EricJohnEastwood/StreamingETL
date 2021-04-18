@@ -33,7 +33,7 @@ public class MainMenu {
         ConnectionDB connectionDB = new ConnectionDB();
         connectionDB.connectToDB();
 
-        Extract.construct_extract_thread("source.xml",engine, connectionDB);
+        Extract.set_extract_thread("source.xml",engine, connectionDB);
 
 //        Transform.run_transformation(engine,connectionDB);
 

@@ -35,8 +35,36 @@ class PeriodicTransformThread extends Thread {
     }
 }
 
+class PeriodicTransform extends TimerTask{
+    private boolean run_thread;
+    private final EngineData engine;
+    private final ConnectionDB connectionDB;
+
+    public PeriodicTransform(EngineData engine, ConnectionDB connectionDB){
+        this.run_thread = true;
+        this.engine = engine;
+        this.connectionDB = connectionDB;
+        System.out.println("Construction Completed");
+    }
+    @Override
+    public void run() {
+        if(this.run_thread) {
+            System.out.println("ThreadExecution");
+            Transform.construct_transform_thread(this.engine, this.connectionDB);
+        }
+    }
+
+    public void stop() {
+        this.run_thread = false;
+    }
+
+}
+
+
 public class Transform {
     private static PeriodicTransformThread pt_thread;
+    private static PeriodicTransform pt_schedule;
+    private static Timer timer;
 
     public static void init_source_table(String filename, EngineData engine) {
         try{
@@ -131,6 +159,20 @@ public class Transform {
 
     public static void init_transformers(EngineData engine) throws Exception{
         engine.constructTransformer("ConcreteTransformer");
+    }
+
+    public static void set_transform_schedule(EngineData engine, ConnectionDB connectionDB) {
+        int i_inter = 10000;
+        Transform.timer = new Timer();
+        Transform.pt_schedule = new PeriodicTransform(engine, connectionDB);
+        Transform.timer.schedule(Transform.pt_schedule, 0, i_inter);
+
+    }
+
+    public static void stop_transform_schedule() {
+        Transform.pt_schedule.cancel();
+        Transform.timer.cancel();
+        Transform.timer.purge();
     }
 
     public static void construct_transform_thread(EngineData engine, ConnectionDB connectionDB) {

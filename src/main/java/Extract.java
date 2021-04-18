@@ -39,6 +39,8 @@ class PeriodicExtract extends TimerTask{
 }
 
 public class Extract {
+    private static ArrayList<PeriodicExtract> pe_threads;
+    private static Timer timer;
 
     public static String readStringFromURL(String requestURL) throws IOException
     {
@@ -118,9 +120,9 @@ public class Extract {
     }
 
 
-    public static void construct_extract_thread(String filename, EngineData engine, ConnectionDB connectionDB) {
+    public static void set_extract_thread(String filename, EngineData engine, ConnectionDB connectionDB) {
         try{
-            ArrayList<PeriodicExtract> pe_threads = new ArrayList<PeriodicExtract>();
+            Extract.pe_threads = new ArrayList<PeriodicExtract>();
 
             DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
             DocumentBuilder builder=factory.newDocumentBuilder();
@@ -131,7 +133,7 @@ public class Extract {
             System.out.println("The total number of data sources is: "+nodes_list.getLength());
 
 
-            Timer timer = new Timer();
+            Extract.timer = new Timer();
 
             for(int i=0;i<nodes_list.getLength();i++){
                 Node nod = nodes_list.item(i);
@@ -145,8 +147,8 @@ public class Extract {
 
 
                     PeriodicExtract pe = new PeriodicExtract(eElement, engine, connectionDB);
-                    pe_threads.add(pe);
                     timer.schedule(pe, 0, i_inter);
+                    Extract.pe_threads.add(pe);
                 }
             }
 
@@ -154,17 +156,26 @@ public class Extract {
 
             System.out.println("Waking up and closing threads");
 //            End all threads
-            for (PeriodicExtract pe_thread : pe_threads) {
+            for (PeriodicExtract pe_thread : Extract.pe_threads) {
                 pe_thread.cancel();
             }
-            timer.cancel();
-            timer.purge();
+            Extract.timer.cancel();
+            Extract.timer.purge();
 
-            return;
         }
         catch(Exception e){
             System.out.println(e);
         }
 
     }
+
+    public static void stop_extract_thread() {
+        for (PeriodicExtract pe_thread : Extract.pe_threads) {
+            pe_thread.cancel();
+        }
+        Extract.timer.cancel();
+        Extract.timer.purge();
+    }
 }
+
+
