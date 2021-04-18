@@ -1,10 +1,7 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 // TODO: Make this class an implementation of ConcreteTransformer
 public class ConcreteTransformer implements Transformer{
@@ -65,7 +62,7 @@ public class ConcreteTransformer implements Transformer{
 
 
     @Override
-    public void transform_for_json(String source_row, TargetTable target_table, Transformations transformations) throws IOException {
+    public void transform_for_json(String source_row, ArrayList<TargetTable> target_table, Transformations transformations) throws IOException {
 //        ArrayList<String> data_format = this.getDatatype();
 //        if(data_format.get(0).equals("simple") && data_format.get(1).equals("multiple") && data_format.get(2).equals("same") ) {
         String data_content = transformations.getData_content();
@@ -89,8 +86,9 @@ public class ConcreteTransformer implements Transformer{
 
     }
 
-    public void transformer_for_simple_multiple_same(String source_row, TargetTable target_table, Transformations transformations) throws IOException {
+    public void transformer_for_simple_multiple_same(String source_row, ArrayList<TargetTable> target_table, Transformations transformations) throws IOException {
         HashMap<String, String> rows = this.transform_to_json(source_row);
+        target_table.add(new TargetTable());
 
         for (HashMap.Entry<String, String> entry : rows.entrySet()) {
             String key = entry.getKey();
@@ -98,7 +96,7 @@ public class ConcreteTransformer implements Transformer{
             for(int tno = 0; tno < transformations.getSize(); tno++) {
                 System.out.println(transformations.getTransformationTypesModule(tno));
                 String[] trans_details = transformations.getTransformationTypesModule(tno).split(" ");
-                //TODO: If else statements for methods
+                //TODO: If else statements for methods; give the methods the one and only element of the target_table array
                 Class cls = this.getClass();
                 Method method = cls.getDeclaredMethod(trans_details[1], String.class);
                 method.invoke(obj, table_for_transform.getData());
@@ -123,11 +121,33 @@ public class ConcreteTransformer implements Transformer{
     }
 
     public void add_value_to_target(Integer korv, Integer index, Integer column, TargetTable target_table) {
-        target_table.setOneColumn(column,value);
+        ArrayList<String> arr;
+        if(korv == 0){
+            arr = string_key;
+        }
+        else{
+            arr = string_value;
+        }
+        if(target_table.getSize() < column){
+            ArrayList<String> tmp = target_table.getColumnName();
+            for(int i=0; i<column-target_table.getSize(); i++){
+                tmp.add("");
+            }
+            target_table.setColumnName(tmp);
+        }
+        target_table.setOneColumn(column,arr.get(index));
     }
 
-    public String replace_from_dict(Integer korv, Integer index, HashMap<String, String> dict) {
-        return dict.get(key);
+    public void replace_from_dict(Integer korv, Integer index, HashMap<String, String> dict) {
+        ArrayList<String> arr;
+        if(korv == 0){
+            arr = string_key;
+        }
+        else(korv == 1){
+            arr = string_value;
+        }
+
+        arr.set(index, arr.get(index).toLowerCase());
     }
 
     public Integer replace_from_dict(Integer key, HashMap<String, Integer> dict) {
@@ -138,11 +158,29 @@ public class ConcreteTransformer implements Transformer{
         return dict.get(key);
     }
 
-    public String[] split_string(Integer korv, HashMap<String, String> rows, String delimiter) {
-        if(delimiter.equals("none")) {
-            return new String[]{value};
+    public void split_string(Integer korv, HashMap<String, String> rows, String delimiter) {
+        Set<String> elements;
+        ArrayList<String> arr;
+        if(korv == 0){
+            elements = (Set<String>) rows.keySet();
+            arr = string_key;
         }
-        return value.split(delimiter);
+        else {
+            elements = (Set<String>) rows.values();
+            arr = string_value;
+        }
+        if(delimiter.equals("none")) {
+            for(String s: elements){
+                arr.add(s);
+            }
+        }
+        else{
+            for(String s: elements){
+                for(String j: s.split(delimiter)){
+                    arr.add(j);
+                }
+            }
+        }
     }
 
     @Override

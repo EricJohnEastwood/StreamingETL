@@ -246,12 +246,18 @@ public class Transform {
     public static void run_one_transformation(EngineData engine, ConnectionDB connectionDB, SourceTable table_for_transform, Transformations transformation_to_run) throws Exception{
 //        String[] class_method_str;
         Transformer transformer = engine.getTransformer(transformation_to_run.getTransformationEngine());
-        TargetTable target_rows = new TargetTable(engine.getTargetTable().getTableName());
+        ArrayList<TargetTable> target_rows;
         if(transformation_to_run.getData_type().equals("json")) {
             transformer.transform_for_json(table_for_transform.getData(), target_rows, transformation_to_run);
         }
         System.out.println(target_rows);
         //TODO: Store the target rows in the target data warehouse
+        String target_name = engine.getTargetTable().getTableName();
+        for(TargetTable target_row: target_rows){
+            String[] tmp = target_row.getColumnName().toArray(new String[0]);
+            String insert_command = GenInstructionDB.insert_instruction(target_name, tmp);
+            connectionDB.insertIntoTable(insert_command);
+        }
 //        try {
 //                for (int i = 0; i < transformation_to_run.getSize(); i++) {
 //                    class_method_str = transformation_to_run.getTransformationTypesModule(i).split("\\.");

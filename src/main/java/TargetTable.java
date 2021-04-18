@@ -55,6 +55,10 @@ public class TargetTable {
         return this.columnName.get(position);
     }
 
+    public Integer getSize() {
+        return this.columnName.size();
+    }
+
 
     @Override
     public String toString() {

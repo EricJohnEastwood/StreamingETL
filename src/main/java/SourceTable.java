@@ -68,6 +68,10 @@ public class SourceTable {
         return this.columnName.get(3);
     }
 
+    public Integer getSize() {
+        return this.columnName.size();
+    }
+
     @Override
     public String toString() {
         return "SourceTable{" +
