@@ -246,7 +246,7 @@ public class Transform {
     public static void run_one_transformation(EngineData engine, ConnectionDB connectionDB, SourceTable table_for_transform, Transformations transformation_to_run) throws Exception{
 //        String[] class_method_str;
         Transformer transformer = engine.getTransformer(transformation_to_run.getTransformationEngine());
-        ArrayList<TargetTable> target_rows;
+        ArrayList<TargetTable> target_rows = new ArrayList<TargetTable>();
         if(transformation_to_run.getData_type().equals("json")) {
             transformer.transform_for_json(table_for_transform.getData(), target_rows, transformation_to_run);
         }
@@ -255,7 +255,8 @@ public class Transform {
         String target_name = engine.getTargetTable().getTableName();
         for(TargetTable target_row: target_rows){
             String[] tmp = target_row.getColumnName().toArray(new String[0]);
-            String insert_command = GenInstructionDB.insert_instruction(target_name, tmp);
+            String[] tmp1 = {"Country", "Base_Format", "Currency_Format", "Currency_Value_Multiplier"};
+            String insert_command = GenInstructionDB.insert_instruction(target_name, tmp1, tmp);
             connectionDB.insertIntoTable(insert_command);
         }
 //        try {

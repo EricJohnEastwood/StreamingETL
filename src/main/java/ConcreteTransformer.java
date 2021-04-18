@@ -88,21 +88,38 @@ public class ConcreteTransformer implements Transformer{
 
     public void transformer_for_simple_multiple_same(String source_row, ArrayList<TargetTable> target_table, Transformations transformations) throws IOException {
         HashMap<String, String> rows = this.transform_to_json(source_row);
-        target_table.add(new TargetTable());
+        TargetTable target_row = new TargetTable();
 
-        for (HashMap.Entry<String, String> entry : rows.entrySet()) {
-            String key = entry.getKey();
-            String value = entry.getValue();
-            for(int tno = 0; tno < transformations.getSize(); tno++) {
-                System.out.println(transformations.getTransformationTypesModule(tno));
-                String[] trans_details = transformations.getTransformationTypesModule(tno).split(" ");
-                //TODO: If else statements for methods; give the methods the one and only element of the target_table array
-                Class cls = this.getClass();
-                Method method = cls.getDeclaredMethod(trans_details[1], String.class);
-                method.invoke(obj, table_for_transform.getData());
-//                if(trans_details[2] == "")
+//        for (HashMap.Entry<String, String> entry : rows.entrySet()) {
+//            String key = entry.getKey();
+//            String value = entry.getValue();
+//            for(int tno = 0; tno < transformations.getSize(); tno++) {
+//                System.out.println(transformations.getTransformationTypesModule(tno));
+//                String[] trans_details = transformations.getTransformationTypesModule(tno).split(" ");
+//                //TODO: If else statements for methods; give the methods the one and only element of the target_table array
+//                Class cls = this.getClass();
+//                Method method = cls.getDeclaredMethod(trans_details[1], String.class);
+//                method.invoke(obj, table_for_transform.getData());
+////                if(trans_details[2] == "")
+//            }
+//        }
+
+        for(int tno = 0; tno < transformations.getSize(); tno++) {
+            System.out.println(transformations.getTransformationTypesModule(tno));
+            String[] trans_details = transformations.getTransformationTypesModule(tno).split(" ");
+            //TODO: If else statements for methods; give the methods the one and only element of the target_table array
+            if(trans_details[1].equals("split_string")){
+                split_string(((trans_details[0].equals("key"))?0:1), rows, trans_details[2]);
+            }
+            else if(trans_details[1].equals("replace_from_dict")){
+                HashMap<String, String> tmp = null;
+                replace_from_dict(((trans_details[0].equals("key"))?0:1), Integer.parseInt(trans_details[2]), tmp);
+            }
+            else if(trans_details[1].equals("add_value_to_target")){
+                add_value_to_target(((trans_details[0].equals("key"))?0:1), Integer.parseInt(trans_details[2]), Integer.parseInt(trans_details[3]), target_row);
             }
         }
+        target_table.add(target_row);
     }
 
     public HashMap<String, String> transform_to_json(String source_row) throws IOException {
@@ -128,12 +145,12 @@ public class ConcreteTransformer implements Transformer{
         else{
             arr = string_value;
         }
-        if(target_table.getSize() < column){
+        if(target_table.getSize() < column+1){
             ArrayList<String> tmp = target_table.getColumnName();
-            for(int i=0; i<column-target_table.getSize(); i++){
+            int n = column-target_table.getSize()+1;
+            for(int i=0; i<n; i++){
                 tmp.add("");
             }
-            target_table.setColumnName(tmp);
         }
         target_table.setOneColumn(column,arr.get(index));
     }
@@ -143,7 +160,7 @@ public class ConcreteTransformer implements Transformer{
         if(korv == 0){
             arr = string_key;
         }
-        else(korv == 1){
+        else{
             arr = string_value;
         }
 
@@ -159,14 +176,14 @@ public class ConcreteTransformer implements Transformer{
     }
 
     public void split_string(Integer korv, HashMap<String, String> rows, String delimiter) {
-        Set<String> elements;
+        Collection<String> elements;
         ArrayList<String> arr;
         if(korv == 0){
-            elements = (Set<String>) rows.keySet();
+            elements = (Collection<String>) rows.keySet();
             arr = string_key;
         }
         else {
-            elements = (Set<String>) rows.values();
+            elements = (Collection<String>) rows.values();
             arr = string_value;
         }
         if(delimiter.equals("none")) {

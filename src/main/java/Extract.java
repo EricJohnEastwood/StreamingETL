@@ -113,7 +113,7 @@ public class Extract {
 
             System.out.println("The data downloaded from URL is the following:\n"+entry_details[4]);
 
-            String insertCommand = GenInstructionDB.insert_instruction(engine.getSourceTable().getTableName(),entry_details);
+            String insertCommand = GenInstructionDB.insert_instruction(engine.getSourceTable().getTableName(),engine.getSourceTable().getColumnName().toArray(new String[0]), entry_details);
             connectionDB.insertIntoTable(insertCommand);
 
         }catch(Exception e){ System.out.println(e);}

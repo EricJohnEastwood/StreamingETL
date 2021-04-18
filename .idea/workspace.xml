@@ -4,13 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3832f544-ac41-417e-99fd-f6b548139d29" name="Default Changelist" comment="Transformer implementation mostly done.">
+    <list default="true" id="3832f544-ac41-417e-99fd-f6b548139d29" name="Default Changelist" comment="if else statements for transformation methods in ConcreteTransformer.java left">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ConcreteTransformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ConcreteTransformer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SourceTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SourceTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TargetTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TargetTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ConnectionDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Extract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Extract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GenInstructionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GenInstructionDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Transform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Transformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Transformer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ConnectionDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ConnectionDB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SourceTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SourceTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Transform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Transform.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +77,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainMenu" />
@@ -92,7 +107,7 @@
       <workItem from="1617453816850" duration="3300000" />
       <workItem from="1618657326117" duration="13280000" />
       <workItem from="1618743959999" duration="7678000" />
-      <workItem from="1618757800631" duration="3366000" />
+      <workItem from="1618757800631" duration="6643000" />
     </task>
     <task id="LOCAL-00001" summary="started Transform.get_transformation implementation">
       <created>1616940708899</created>
@@ -241,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618755220234</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="if else statements for transformation methods in ConcreteTransformer.java left">
+      <created>1618761280049</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1618761280049</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,6 +324,7 @@
     <MESSAGE value="Added ConcreteTransformer + generic functions" />
     <MESSAGE value="run transformation implementation done; transformer implementation left" />
     <MESSAGE value="Transformer implementation mostly done." />
-    <option name="LAST_COMMIT_MESSAGE" value="Transformer implementation mostly done." />
+    <MESSAGE value="if else statements for transformation methods in ConcreteTransformer.java left" />
+    <option name="LAST_COMMIT_MESSAGE" value="if else statements for transformation methods in ConcreteTransformer.java left" />
   </component>
 </project>
