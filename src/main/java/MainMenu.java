@@ -40,7 +40,7 @@ public class MainMenu {
 
 
         Transform.set_transform_schedule(engine,connectionDB);
-        TimeUnit.SECONDS.sleep(20);
+        TimeUnit.SECONDS.sleep(10);
         Transform.stop_transform_schedule();
 //        Transform.run_transformation(engine, connectionDB);
 
