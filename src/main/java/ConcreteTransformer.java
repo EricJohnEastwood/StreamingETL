@@ -64,7 +64,7 @@ public class ConcreteTransformer implements Transformer{
 
 
     @Override
-    public void transform_for_json(String source_row, ArrayList<TargetTable> target_table, Transformations transformations) throws IOException {
+    public void transform_for_json(SourceTable source_row, ArrayList<TargetTable> target_table, Transformations transformations) throws IOException {
 //        ArrayList<String> data_format = this.getDatatype();
 //        if(data_format.get(0).equals("simple") && data_format.get(1).equals("multiple") && data_format.get(2).equals("same") ) {
         String data_content = transformations.getData_content();
@@ -91,7 +91,8 @@ public class ConcreteTransformer implements Transformer{
 
     }
 
-    public void transformer_for_simple_multiple_same(String source_row, ArrayList<TargetTable> target_table, Transformations transformations) throws IOException {
+    public void transformer_for_simple_multiple_same(SourceTable source_table, ArrayList<TargetTable> target_table, Transformations transformations) throws IOException {
+        String source_row = source_table.getData();
         HashMap<String, String> rows = this.transform_to_json(source_row);
         TargetTable target_row = new TargetTable();
 
@@ -147,20 +148,28 @@ public class ConcreteTransformer implements Transformer{
                             }
 //                        add_value_to_target(((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), Integer.parseInt(trans_details[3]), target_row);
                             break;
-//                    case "add_date_time":
-//                        try {
-//                            Object obj = cls.newInstance();
-//                            Method method = cls.getDeclaredMethod(trans_details[1], Integer.class, Integer.class, Integer.class, TargetTable.class);
-//                            method.invoke(obj, ((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]),Integer.parseInt(trans_details[3]), target_row);
-//
-//                        } catch (SecurityException | NoSuchMethodException e) {
-//                            System.out.println(e);
-//                        } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
-//                            e.printStackTrace();
-//                        }
-////
-//                        add_value_to_target(((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), Integer.parseInt(trans_details[3]), target_row);
-//                        break;
+                    case "add_date_time":
+                        try {
+                            Object obj = cls.newInstance();
+                            Method method = cls.getDeclaredMethod(trans_details[1], Integer.class, Integer.class, Integer.class, SourceTable.class, TargetTable.class);
+                            int tmp = 0;
+                            if(trans_details[0].equals("key")){
+                                tmp = 0;
+                            }
+                            else if(trans_details[0].equals("value")){
+                                tmp = 1;
+                            }
+                            else if(trans_details[0].equals("none")){
+                                tmp = 2;
+                            }
+                            method.invoke(obj, tmp, Integer.parseInt(trans_details[2]), Integer.parseInt(trans_details[3]), source_table, target_row);
+
+                        } catch (SecurityException | NoSuchMethodException e) {
+                            System.out.println(e);
+                        } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
+                            e.printStackTrace();
+                        }
+                        break;
                         default:
                             System.out.println("Not a valid function");
                             break;
@@ -179,13 +188,11 @@ public class ConcreteTransformer implements Transformer{
 
     }
 
-    public void add_default_date_time(Integer source_table_loc, Integer target_table_loc, SourceTable source_table, TargetTable target_table) {
-        String date_time = source_table.getOneColumn(source_table_loc);
-        target_table.setOneColumn(target_table_loc,date_time);
-    }
-
-    public void add_date_from_source_data(String value, Map<String,String> source_data, Integer column, TargetTable target_table) {
-        target_table.setOneColumn(column, source_data.get(value));
+    public void add_date_time(Integer korv, Integer source_loc, Integer target_loc, SourceTable source_table, TargetTable target_table) {
+        if(korv == 2){
+            String date_time = source_table.getOneColumn(source_loc);
+            target_table.setOneColumn(target_loc,date_time);
+        }
     }
 
     public void add_value_to_target(Integer korv, Integer index, Integer column, TargetTable target_table) {

@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3832f544-ac41-417e-99fd-f6b548139d29" name="Default Changelist" comment="if else statements for transformation methods in ConcreteTransformer.java left">
+    <list default="true" id="3832f544-ac41-417e-99fd-f6b548139d29" name="Default Changelist" comment="run_transformation done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ConcreteTransformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ConcreteTransformer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CommandLineTransformations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CommandLineTransformations.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GenInstructionDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GenInstructionDB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Transformations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Transformations.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Transform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Transformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Transformer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/url1_json.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/url1_json.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,9 +39,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="ProblemsViewState">
-    <option name="showPreview" value="true" />
-  </component>
   <component name="ProjectId" id="1qKJolkuVgQvPvN2Ntgqga5s1Uc" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -61,17 +58,6 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager" selected="Application.MainMenu">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainMenu" />
       <module name="FinalProject" />
@@ -105,7 +91,8 @@
       <workItem from="1617453816850" duration="3300000" />
       <workItem from="1618657326117" duration="13280000" />
       <workItem from="1618743959999" duration="7678000" />
-      <workItem from="1618757800631" duration="6643000" />
+      <workItem from="1618757800631" duration="7960000" />
+      <workItem from="1618802349494" duration="5122000" />
     </task>
     <task id="LOCAL-00001" summary="started Transform.get_transformation implementation">
       <created>1616940708899</created>
@@ -261,12 +248,12 @@
       <option name="project" value="LOCAL" />
       <updated>1618761280049</updated>
     </task>
-    <task id="LOCAL-00023" summary="Tested Extract Treading">
-      <created>1618803374786</created>
+    <task id="LOCAL-00023" summary="run_transformation done">
+      <created>1618767147289</created>
       <option name="number" value="00023" />
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
-      <updated>1618803374786</updated>
+      <updated>1618767147289</updated>
     </task>
     <option name="localTasksCounter" value="24" />
     <servers />
@@ -330,7 +317,7 @@
     <MESSAGE value="run transformation implementation done; transformer implementation left" />
     <MESSAGE value="Transformer implementation mostly done." />
     <MESSAGE value="if else statements for transformation methods in ConcreteTransformer.java left" />
-    <MESSAGE value="Tested Extract Treading" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tested Extract Treading" />
+    <MESSAGE value="run_transformation done" />
+    <option name="LAST_COMMIT_MESSAGE" value="run_transformation done" />
   </component>
 </project>

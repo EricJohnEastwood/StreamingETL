@@ -204,26 +204,25 @@ public class Transform {
 
             String table_name = engine.getSourceTable().getTableName();
 
-            // Get one row from source data dump
-//            String selectCommand = GenInstructionDB.select_one_instruction(table_name);
-//            SourceTable table_for_transform = connectionDB.selectFromTable(selectCommand,engine);
+//             Get one row from source data dump
+            String selectCommand = GenInstructionDB.select_one_instruction(table_name);
+            SourceTable table_for_transform = connectionDB.selectFromSourceTable(selectCommand,engine);
+
+            Transformations transformation_to_run = engine.getOneTransformation(table_for_transform.getKey());
 
 
-//            Transformations transformation_to_run = engine.getOneTransformation(table_for_transform.getKey());
-
-
-            // Brute Data Input
-            ArrayList<String> key = new ArrayList<String>();
-            key.add("json");
-            key.add("https://free.currconv.com/api/v7/convert?q=USD_INR,INR_USD&compact=ultra&apiKey=c0dbece0e1a955a43e02");
-            Transformations transformation_to_run = engine.getOneTransformation(key);
-            ArrayList<String> column_value = new ArrayList<String>();
-            column_value.add("json");
-            column_value.add("https://free.currconv.com/api/v7/convert?q=USD_INR,INR_USD&compact=ultra&apiKey=c0dbece0e1a955a43e02");
-            column_value.add("2022-01-31 00:38:00");
-            column_value.add("{\"USD_INR\": \"74.7297\"}");
-            SourceTable table_for_transform = new SourceTable("source_data_dump",column_value);
-            // End Brute Data Input
+//            // Brute Data Input
+//            ArrayList<String> key = new ArrayList<String>();
+//            key.add("json");
+//            key.add("https://free.currconv.com/api/v7/convert?q=USD_INR,INR_USD&compact=ultra&apiKey=c0dbece0e1a955a43e02");
+//            Transformations transformation_to_run = engine.getOneTransformation(key);
+//            ArrayList<String> column_value = new ArrayList<String>();
+//            column_value.add("json");
+//            column_value.add("https://free.currconv.com/api/v7/convert?q=USD_INR,INR_USD&compact=ultra&apiKey=c0dbece0e1a955a43e02");
+//            column_value.add("2022-01-31 00:38:00");
+//            column_value.add("{\"USD_INR\": \"74.7297\"}");
+//            SourceTable table_for_transform = new SourceTable("source_data_dump",column_value);
+//            // End Brute Data Input
 
             System.out.println(table_for_transform);
             System.out.println(transformation_to_run);
@@ -244,18 +243,18 @@ public class Transform {
     }
 
     public static void run_one_transformation(EngineData engine, ConnectionDB connectionDB, SourceTable table_for_transform, Transformations transformation_to_run) throws Exception{
-//        String[] class_method_str;
         Transformer transformer = engine.getTransformer(transformation_to_run.getTransformationEngine());
         ArrayList<TargetTable> target_rows = new ArrayList<TargetTable>();
         if(transformation_to_run.getData_type().equals("json")) {
-            transformer.transform_for_json(table_for_transform.getData(), target_rows, transformation_to_run);
+            transformer.transform_for_json(table_for_transform, target_rows, transformation_to_run);
         }
         System.out.println(target_rows);
         //TODO: Store the target rows in the target data warehouse
         String target_name = engine.getTargetTable().getTableName();
         for(TargetTable target_row: target_rows){
             String[] tmp = target_row.getColumnName().toArray(new String[0]);
-            String[] tmp1 = {"Country", "Base_Format", "Currency_Format", "Currency_Value_Multiplier"};
+            String[] tmp1 = {"Foreign_Exchange_Id", "Currency_Format", "Base_Format", "Currency_Value_Multiplier", "Country", "Date_Time"};
+            tmp[0] = Long.toString(System.nanoTime());
             String insert_command = GenInstructionDB.insert_instruction(target_name, tmp1, tmp);
             connectionDB.insertIntoTable(insert_command);
         }
