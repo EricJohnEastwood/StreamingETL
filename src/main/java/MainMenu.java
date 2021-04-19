@@ -35,15 +35,16 @@ public class MainMenu {
         connectionDB.connectToDB();
 
         Extract.set_extract_thread("source.xml",engine, connectionDB);
-        TimeUnit.SECONDS.sleep(20);
+        TimeUnit.SECONDS.sleep(5);
         Extract.stop_extract_thread();
 
 
         Transform.set_transform_schedule(engine,connectionDB);
         TimeUnit.SECONDS.sleep(20);
         Transform.stop_transform_schedule();
+//        Transform.run_transformation(engine, connectionDB);
 
-            connectionDB.disconnectFromDB();
+        connectionDB.disconnectFromDB();
 
     }
 }

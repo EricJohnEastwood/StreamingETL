@@ -236,8 +236,6 @@ public class Transform {
             // Running the transform
             run_one_transformation(engine, connectionDB, table_for_transform, transformation_to_run);
 
-            // TODO: Delete transformed row from source data dump
-
             String deleteCommand = GenInstructionDB.delete_instruction(table_name, engine.getSourceTable().getColumnName().get(0), table_for_transform.getColumnName().get(0));
             connectionDB.deleteFromTable(deleteCommand);
 

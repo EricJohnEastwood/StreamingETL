@@ -6,7 +6,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
 
-// TODO: Make this class an implementation of ConcreteTransformer
 public class ConcreteTransformer implements Transformer{
     ArrayList<String> string_key;
     ArrayList<String> string_value;
@@ -153,6 +152,7 @@ public class ConcreteTransformer implements Transformer{
 //                            } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
 //                                e.printStackTrace();
 //                            }
+
                             add_value_to_target(((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), Integer.parseInt(trans_details[3]), target_row);
                             break;
                     case "add_date_time":
@@ -176,7 +176,18 @@ public class ConcreteTransformer implements Transformer{
 //                        } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
 //                            e.printStackTrace();
 //                        }
-                        System.out.println("Hello");
+
+                        int tmp = 0;
+                        if(trans_details[0].equals("key")){
+                            tmp = 0;
+                        }
+                        else if(trans_details[0].equals("value")){
+                            tmp = 1;
+                        }
+                        else if(trans_details[0].equals("none")){
+                            tmp = 2;
+                        }
+                        add_date_time(tmp, Integer.parseInt(trans_details[2]), Integer.parseInt(trans_details[3]), source_table, target_row);
                         break;
                         default:
                             System.out.println("Not a valid function");
@@ -185,6 +196,11 @@ public class ConcreteTransformer implements Transformer{
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
+                System.out.println("Phuckkk");
+                System.out.println(rows);
+                System.out.println(string_key);
+                System.out.println(string_value);
+                System.out.println(target_row);
             }
             target_table.add(target_row);
         }
@@ -198,7 +214,15 @@ public class ConcreteTransformer implements Transformer{
 
     public void add_date_time(Integer korv, Integer source_loc, Integer target_loc, SourceTable source_table, TargetTable target_table) {
         if(korv == 2){
+            System.out.println(source_table);
             String date_time = source_table.getOneColumn(source_loc);
+            if(target_table.getSize() < target_loc+1){
+                ArrayList<String> tmp = target_table.getColumnName();
+                int n = target_loc-target_table.getSize()+1;
+                for(int i=0; i<n; i++){
+                    tmp.add("");
+                }
+            }
             target_table.setOneColumn(target_loc,date_time);
         }
     }
