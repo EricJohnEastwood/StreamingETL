@@ -7,9 +7,16 @@
     <list default="true" id="3832f544-ac41-417e-99fd-f6b548139d29" name="Default Changelist" comment="run_transformation done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ConcreteTransformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ConcreteTransformer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ConnectionDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SourceTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SourceTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Transform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Transformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Transformer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/target.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/target.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/url1_json.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/url1_json.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ConnectionDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ConnectionDB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SourceTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SourceTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Transform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Transform.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/target.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/target.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

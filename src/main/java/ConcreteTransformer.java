@@ -1,3 +1,4 @@
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -65,8 +66,6 @@ public class ConcreteTransformer implements Transformer{
 
     @Override
     public void transform_for_json(SourceTable source_row, ArrayList<TargetTable> target_table, Transformations transformations) throws IOException {
-//        ArrayList<String> data_format = this.getDatatype();
-//        if(data_format.get(0).equals("simple") && data_format.get(1).equals("multiple") && data_format.get(2).equals("same") ) {
         String data_content = transformations.getData_content();
         String[] data_format = data_content.split(":");
         if(data_format[0].equals("simple") && data_format[2].equals("same") ) {
@@ -94,11 +93,19 @@ public class ConcreteTransformer implements Transformer{
     public void transformer_for_simple_multiple_same(SourceTable source_table, ArrayList<TargetTable> target_table, Transformations transformations) throws IOException {
         String source_row = source_table.getData();
         HashMap<String, String> rows = this.transform_to_json(source_row);
-        TargetTable target_row = new TargetTable();
+
 
         for (HashMap.Entry<String, String> entry : rows.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
+
+//            Clean values
+            this.int_key = new ArrayList<>();
+            this.int_value = new ArrayList<>();
+            this.string_key = new ArrayList<>();
+            this.string_value = new ArrayList<>();
+
+            TargetTable target_row = new TargetTable();
 
             for (int tno = 0; tno < transformations.getSize(); tno++) {
                 System.out.println(transformations.getTransformationTypesModule(tno));
@@ -107,68 +114,69 @@ public class ConcreteTransformer implements Transformer{
                     Class cls = Class.forName("ConcreteTransformer");
                     switch (trans_details[1]) {
                         case "split_string":
-                            try {
-                                Object obj = cls.newInstance();
-                                Method method = cls.getDeclaredMethod(trans_details[1], Integer.class, String.class, String.class);
+//                            try {
+//                                Object obj = cls.newInstance();
+//                                Method method = cls.getDeclaredMethod(trans_details[1], Integer.class, String.class, String.class);
+//
+//                                method.invoke(obj, ((trans_details[0].equals("key")) ? 0 : 1), ((trans_details[0].equals("key")) ? key : value), trans_details[2]);
+//
+//                            } catch (SecurityException | NoSuchMethodException e) {
+//                                System.out.println(e);
+//                            } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
+//                                e.printStackTrace();
+//                            }
 
-                                method.invoke(obj, ((trans_details[0].equals("key")) ? 0 : 1), ((trans_details[0].equals("key")) ? key : value), trans_details[2]);
-
-                            } catch (SecurityException | NoSuchMethodException e) {
-                                System.out.println(e);
-                            } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
-                                e.printStackTrace();
-                            }
-
-//                        split_string(((trans_details[0].equals("key")) ? 0 : 1), rows, trans_details[2]);
+                            split_string(((trans_details[0].equals("key")) ? 0 : 1), ((trans_details[0].equals("key")) ? key : value), trans_details[2]);
                             break;
                         case "replace_from_dict":
-                            try {
-                                Object obj = cls.newInstance();
-                                Method method = cls.getDeclaredMethod(trans_details[1], Integer.class, Integer.class, HashMap.class);
-                                method.invoke(obj, ((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), null);
+//                            try {
+//                                Object obj = cls.newInstance();
+//                                Method method = cls.getDeclaredMethod(trans_details[1], Integer.class, Integer.class, HashMap.class);
+//                                method.invoke(obj, ((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), null);
+//
+//                            } catch (SecurityException | NoSuchMethodException e) {
+//                                System.out.println(e);
+//                            } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
+//                                e.printStackTrace();
+//                            }
 
-                            } catch (SecurityException | NoSuchMethodException e) {
-                                System.out.println(e);
-                            } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
-                                e.printStackTrace();
-                            }
-//                        HashMap<String, String> tmp = null;
-//                        replace_from_dict(((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), tmp);
+                            replace_from_dict(((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), null);
                             break;
                         case "add_value_to_target":
-                            try {
-                                Object obj = cls.newInstance();
-                                Method method = cls.getDeclaredMethod(trans_details[1], Integer.class, Integer.class, Integer.class, TargetTable.class);
-                                method.invoke(obj, ((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), Integer.parseInt(trans_details[3]), target_row);
-
-                            } catch (SecurityException | NoSuchMethodException e) {
-                                System.out.println(e);
-                            } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
-                                e.printStackTrace();
-                            }
-//                        add_value_to_target(((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), Integer.parseInt(trans_details[3]), target_row);
+//                            try {
+//                                Object obj = cls.newInstance();
+//                                Method method = cls.getDeclaredMethod(trans_details[1], Integer.class, Integer.class, Integer.class, TargetTable.class);
+//                                method.invoke(obj, ((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), Integer.parseInt(trans_details[3]), target_row);
+//
+//                            } catch (SecurityException | NoSuchMethodException e) {
+//                                System.out.println(e);
+//                            } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
+//                                e.printStackTrace();
+//                            }
+                            add_value_to_target(((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), Integer.parseInt(trans_details[3]), target_row);
                             break;
                     case "add_date_time":
-                        try {
-                            Object obj = cls.newInstance();
-                            Method method = cls.getDeclaredMethod(trans_details[1], Integer.class, Integer.class, Integer.class, SourceTable.class, TargetTable.class);
-                            int tmp = 0;
-                            if(trans_details[0].equals("key")){
-                                tmp = 0;
-                            }
-                            else if(trans_details[0].equals("value")){
-                                tmp = 1;
-                            }
-                            else if(trans_details[0].equals("none")){
-                                tmp = 2;
-                            }
-                            method.invoke(obj, tmp, Integer.parseInt(trans_details[2]), Integer.parseInt(trans_details[3]), source_table, target_row);
-
-                        } catch (SecurityException | NoSuchMethodException e) {
-                            System.out.println(e);
-                        } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
-                            e.printStackTrace();
-                        }
+//                        try {
+//                            Object obj = cls.newInstance();
+//                            Method method = cls.getDeclaredMethod(trans_details[1], Integer.class, Integer.class, Integer.class, SourceTable.class, TargetTable.class);
+//                            int tmp = 0;
+//                            if(trans_details[0].equals("key")){
+//                                tmp = 0;
+//                            }
+//                            else if(trans_details[0].equals("value")){
+//                                tmp = 1;
+//                            }
+//                            else if(trans_details[0].equals("none")){
+//                                tmp = 2;
+//                            }
+//                            method.invoke(obj, tmp, Integer.parseInt(trans_details[2]), Integer.parseInt(trans_details[3]), source_table, target_row);
+//
+//                        } catch (SecurityException | NoSuchMethodException e) {
+//                            System.out.println(e);
+//                        } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
+//                            e.printStackTrace();
+//                        }
+                        System.out.println("Hello");
                         break;
                         default:
                             System.out.println("Not a valid function");
@@ -184,7 +192,7 @@ public class ConcreteTransformer implements Transformer{
 
     public HashMap<String, String> transform_to_json(String source_row) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(source_row, HashMap.class);
+        return mapper.readValue(source_row, new TypeReference<HashMap<String, String>>() {});
 
     }
 

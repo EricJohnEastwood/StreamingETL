@@ -2,7 +2,37 @@
 <transformations xmlns="http://www.ETL.in">
     <transformationSteps>
         <type>json</type>
-        <URL>https://free.currconv.com/api/v7/convert?q=USD_INR,INR_USD&amp;compact=ultra&amp;apiKey=c0dbece0e1a955a43e02</URL>
+        <URL>https://free.currconv.com/api/v7/convert?q=USD_INR&amp;compact=ultra&amp;apiKey=c0dbece0e1a955a43e02</URL>
+        <transformation-rule>ConcreteTransformer</transformation-rule>
+        <datatype>simple:single:same</datatype>
+        <transformation>key split_string _</transformation>
+        <transformation>key replace_from_dict 0</transformation>
+        <transformation>key add_value_to_target 0 1</transformation>
+        <transformation>key replace_from_dict 1</transformation>
+        <transformation>key add_value_to_target 1 2</transformation>
+        <transformation>none add_default_date_time 3 5</transformation>
+        <transformation>value split_string none</transformation>
+        <transformation>value add_value_to_target 0 3</transformation>
+    </transformationSteps>
+
+    <transformationSteps>
+        <type>json</type>
+        <URL>https://free.currconv.com/api/v7/convert?q=INR_USD&amp;compact=ultra&amp;apiKey=c0dbece0e1a955a43e02</URL>
+        <transformation-rule>ConcreteTransformer</transformation-rule>
+        <datatype>simple:single:same</datatype>
+        <transformation>key split_string _</transformation>
+        <transformation>key replace_from_dict 0</transformation>
+        <transformation>key add_value_to_target 0 1</transformation>
+        <transformation>key replace_from_dict 1</transformation>
+        <transformation>key add_value_to_target 1 2</transformation>
+        <transformation>none add_default_date_time 3 5</transformation>
+        <transformation>value split_string none</transformation>
+        <transformation>value add_value_to_target 0 3</transformation>
+    </transformationSteps>
+
+    <transformationSteps>
+        <type>json</type>
+        <URL>https://free.currconv.com/api/v7/convert?q=INR_USD,CAD_USD&amp;compact=ultra&amp;apiKey=c0dbece0e1a955a43e02</URL>
         <transformation-rule>ConcreteTransformer</transformation-rule>
         <datatype>simple:multiple:same</datatype>
         <transformation>key split_string _</transformation>

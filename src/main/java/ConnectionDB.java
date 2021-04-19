@@ -85,7 +85,6 @@ public class ConnectionDB {
             this.conn.commit();
             this.stmt.close();
 
-            System.out.println(deleteCommand);
         } catch(Exception se){
 
             se.printStackTrace();
@@ -102,35 +101,35 @@ public class ConnectionDB {
 
     public SourceTable selectFromSourceTable(String selectCommand, EngineData engine) {
         try {
-            conn.setAutoCommit(false);
-            stmt = conn.createStatement();
+            this.conn.setAutoCommit(false);
+            this.stmt = this.conn.createStatement();
 
             ResultSet rs = null;
-            rs = stmt.executeQuery(selectCommand);
+            rs = this.stmt.executeQuery(selectCommand);
             ResultSetMetaData rsMetaData = rs.getMetaData();
             String tableName = rsMetaData.getTableName(4);
             ArrayList<String> columnValues = new ArrayList<String>();
 
             if(rs.next()) {
-                for (int i = 2; i <= engine.getSourceTable().getColumnName().size()+1; i++) { // indexing starts from 1
+                for (int i = 1; i <= engine.getSourceTable().getColumnName().size(); i++) { // indexing starts from 1
                     columnValues.add(rs.getString(i));
-                    System.out.println(rs.getString(i));
                 }
             }
             else {
                 System.out.println("Not Found / Table Empty");
+                return null;
             }
-            conn.commit();
-            stmt.close();
-            System.out.println(selectCommand);
+            this.conn.commit();
+            this.stmt.close();
+
             return new SourceTable(tableName,columnValues);
         } catch(Exception se){
             se.printStackTrace();
         }
         finally {
             try{
-                if(stmt!=null)
-                    stmt.close();
+                if(this.stmt!=null)
+                    this.stmt.close();
             }catch(SQLException se2){
             }
         }
@@ -140,11 +139,11 @@ public class ConnectionDB {
     public Integer checkIfNonEmptyTable(String selectCommand) {
         try {
             Integer non_empty = -1;
-            conn.setAutoCommit(false);
-            stmt = conn.createStatement();
+            this.conn.setAutoCommit(false);
+            this.stmt = this.conn.createStatement();
 
             ResultSet rs = null;
-            rs = stmt.executeQuery(selectCommand);
+            rs = this.stmt.executeQuery(selectCommand);
 
             if(rs.next()) {
                 try {
@@ -158,8 +157,7 @@ public class ConnectionDB {
                 non_empty = -1;
             }
 
-            conn.commit();
-            conn.close();
+            this.conn.commit();
             return non_empty;
 
         } catch(Exception se){
@@ -167,8 +165,8 @@ public class ConnectionDB {
         }
         finally {
             try{
-                if(stmt!=null)
-                    stmt.close();
+                if(this.stmt!=null)
+                    this.stmt.close();
             }catch(SQLException se2){
             }
         }

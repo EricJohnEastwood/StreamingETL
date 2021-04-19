@@ -49,7 +49,7 @@ class PeriodicTransform extends TimerTask{
     @Override
     public void run() {
         if(this.run_thread) {
-            System.out.println("ThreadExecution");
+            System.out.println("SchedulerExecution");
             Transform.construct_transform_thread(this.engine, this.connectionDB);
         }
     }
@@ -176,7 +176,11 @@ public class Transform {
     }
 
     public static void construct_transform_thread(EngineData engine, ConnectionDB connectionDB) {
-        if(pt_thread.isRun_thread()) {
+        if(pt_thread == null) {
+            pt_thread = new PeriodicTransformThread(engine, connectionDB);
+            pt_thread.start();
+        }
+        else if(pt_thread.isRun_thread()) {
             System.out.println("Thread already executing");
         }
         else {
@@ -224,16 +228,18 @@ public class Transform {
 //            SourceTable table_for_transform = new SourceTable("source_data_dump",column_value);
 //            // End Brute Data Input
 
-            System.out.println(table_for_transform);
-            System.out.println(transformation_to_run);
+            if(table_for_transform == null || transformation_to_run == null) {
+                System.out.println("Empty");
+                return;
+            }
 
             // Running the transform
             run_one_transformation(engine, connectionDB, table_for_transform, transformation_to_run);
 
             // TODO: Delete transformed row from source data dump
 
-//            String deleteCommand = GenInstructionDB.delete_instruction(table_name, engine.getSourceTable().getColumnName().get(0), table_for_transform.getColumnName().get(0));
-//            connectionDB.deleteFromTable(deleteCommand);
+            String deleteCommand = GenInstructionDB.delete_instruction(table_name, engine.getSourceTable().getColumnName().get(0), table_for_transform.getColumnName().get(0));
+            connectionDB.deleteFromTable(deleteCommand);
 
             System.out.println("Exiting thread");
         } catch (Exception e) {
@@ -249,13 +255,12 @@ public class Transform {
             transformer.transform_for_json(table_for_transform, target_rows, transformation_to_run);
         }
         System.out.println(target_rows);
-        //TODO: Store the target rows in the target data warehouse
-        String target_name = engine.getTargetTable().getTableName();
+
         for(TargetTable target_row: target_rows){
             String[] tmp = target_row.getColumnName().toArray(new String[0]);
             String[] tmp1 = {"Foreign_Exchange_Id", "Currency_Format", "Base_Format", "Currency_Value_Multiplier", "Country", "Date_Time"};
             tmp[0] = Long.toString(System.nanoTime());
-            String insert_command = GenInstructionDB.insert_instruction(target_name, tmp1, tmp);
+            String insert_command = GenInstructionDB.insert_instruction(engine.getTargetTable().getTableName(), tmp1, tmp);
             connectionDB.insertIntoTable(insert_command);
         }
     }

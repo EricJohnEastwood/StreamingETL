@@ -59,13 +59,13 @@ public class SourceTable {
 
     public ArrayList<String> getKey() {
         ArrayList<String> key = new ArrayList<String>();
-        key.add(this.columnName.get(0));
         key.add(this.columnName.get(1));
+        key.add(this.columnName.get(2));
         return key;
     }
 
     public  String getData() {
-        return this.columnName.get(3);
+        return this.columnName.get(4);
     }
 
     public Integer getSize() {

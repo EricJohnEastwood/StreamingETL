@@ -39,9 +39,9 @@ public class MainMenu {
         Extract.stop_extract_thread();
 
 
-//        Transform.run_transformation(engine,connectionDB);
-//        TimeUnit.SECONDS.sleep(20);
-//        Transform.stop_transform_schedule();
+        Transform.set_transform_schedule(engine,connectionDB);
+        TimeUnit.SECONDS.sleep(20);
+        Transform.stop_transform_schedule();
 
             connectionDB.disconnectFromDB();
 

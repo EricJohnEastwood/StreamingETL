@@ -2,7 +2,7 @@
 <transformations xmlns="http://www.ETL.in">
     <transformationTarget>
         <table>foreign_exchange</table>
-        <column>Source_Data_Id</column>
+        <column>Foreign_Exchange_Id</column>
         <column>Currency_Format</column>
         <column>Base_Format</column>
         <column>Currency_Value_Multiplier</column>
