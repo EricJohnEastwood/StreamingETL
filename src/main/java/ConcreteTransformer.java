@@ -69,9 +69,12 @@ public class ConcreteTransformer implements Transformer{
 //        if(data_format.get(0).equals("simple") && data_format.get(1).equals("multiple") && data_format.get(2).equals("same") ) {
         String data_content = transformations.getData_content();
         String[] data_format = data_content.split(":");
-        if(data_format[0].equals("simple") && data_format[1].equals("multiple") && data_format[2].equals("same") ) {
+        if(data_format[0].equals("simple") && data_format[2].equals("same") ) {
             transformer_for_simple_multiple_same(source_row, target_table, transformations);
         }
+//        if(data_format[0].equals("simple") && data_format[1].equals("multiple") && data_format[2].equals("same") ) {
+//            transformer_for_simple_multiple_same(source_row, target_table, transformations);
+//        }
     }
 
     @Override
@@ -92,67 +95,58 @@ public class ConcreteTransformer implements Transformer{
         HashMap<String, String> rows = this.transform_to_json(source_row);
         TargetTable target_row = new TargetTable();
 
-//        for (HashMap.Entry<String, String> entry : rows.entrySet()) {
-//            String key = entry.getKey();
-//            String value = entry.getValue();
-//            for(int tno = 0; tno < transformations.getSize(); tno++) {
-//                System.out.println(transformations.getTransformationTypesModule(tno));
-//                String[] trans_details = transformations.getTransformationTypesModule(tno).split(" ");
-//                //TODO: If else statements for methods; give the methods the one and only element of the target_table array
-//                Class cls = this.getClass();
-//                Method method = cls.getDeclaredMethod(trans_details[1], String.class);
-//                method.invoke(obj, table_for_transform.getData());
-////                if(trans_details[2] == "")
-//            }
-//        }
+        for (HashMap.Entry<String, String> entry : rows.entrySet()) {
+            String key = entry.getKey();
+            String value = entry.getValue();
 
-        for(int tno = 0; tno < transformations.getSize(); tno++) {
-            System.out.println(transformations.getTransformationTypesModule(tno));
-            String[] trans_details = transformations.getTransformationTypesModule(tno).split(" ");
-            try {
-                Class cls = Class.forName("ConcreteTransformer");
-                switch (trans_details[1]) {
-                    case "split_string":
-                        try {
-                            Object obj = cls.newInstance();
-                            Method method = cls.getDeclaredMethod(trans_details[1], Integer.class, HashMap.class, String.class);
-                            method.invoke(obj, ((trans_details[0].equals("key")) ? 0 : 1), rows, trans_details[2]);
+            for (int tno = 0; tno < transformations.getSize(); tno++) {
+                System.out.println(transformations.getTransformationTypesModule(tno));
+                String[] trans_details = transformations.getTransformationTypesModule(tno).split(" ");
+                try {
+                    Class cls = Class.forName("ConcreteTransformer");
+                    switch (trans_details[1]) {
+                        case "split_string":
+                            try {
+                                Object obj = cls.newInstance();
+                                Method method = cls.getDeclaredMethod(trans_details[1], Integer.class, String.class, String.class);
 
-                        } catch (SecurityException | NoSuchMethodException e) {
-                            System.out.println(e);
-                        } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
-                            e.printStackTrace();
-                        }
+                                method.invoke(obj, ((trans_details[0].equals("key")) ? 0 : 1), ((trans_details[0].equals("key")) ? key : value), trans_details[2]);
+
+                            } catch (SecurityException | NoSuchMethodException e) {
+                                System.out.println(e);
+                            } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
+                                e.printStackTrace();
+                            }
 
 //                        split_string(((trans_details[0].equals("key")) ? 0 : 1), rows, trans_details[2]);
-                        break;
-                    case "replace_from_dict":
-                        try {
-                            Object obj = cls.newInstance();
-                            Method method = cls.getDeclaredMethod(trans_details[1], Integer.class, Integer.class, HashMap.class);
-                            method.invoke(obj, ((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), null);
+                            break;
+                        case "replace_from_dict":
+                            try {
+                                Object obj = cls.newInstance();
+                                Method method = cls.getDeclaredMethod(trans_details[1], Integer.class, Integer.class, HashMap.class);
+                                method.invoke(obj, ((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), null);
 
-                        } catch (SecurityException | NoSuchMethodException e) {
-                            System.out.println(e);
-                        } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
-                            e.printStackTrace();
-                        }
+                            } catch (SecurityException | NoSuchMethodException e) {
+                                System.out.println(e);
+                            } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
+                                e.printStackTrace();
+                            }
 //                        HashMap<String, String> tmp = null;
 //                        replace_from_dict(((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), tmp);
-                        break;
-                    case "add_value_to_target":
-                        try {
-                            Object obj = cls.newInstance();
-                            Method method = cls.getDeclaredMethod(trans_details[1], Integer.class, Integer.class, Integer.class, TargetTable.class);
-                            method.invoke(obj, ((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]),Integer.parseInt(trans_details[3]), target_row);
+                            break;
+                        case "add_value_to_target":
+                            try {
+                                Object obj = cls.newInstance();
+                                Method method = cls.getDeclaredMethod(trans_details[1], Integer.class, Integer.class, Integer.class, TargetTable.class);
+                                method.invoke(obj, ((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), Integer.parseInt(trans_details[3]), target_row);
 
-                        } catch (SecurityException | NoSuchMethodException e) {
-                            System.out.println(e);
-                        } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
-                            e.printStackTrace();
-                        }
+                            } catch (SecurityException | NoSuchMethodException e) {
+                                System.out.println(e);
+                            } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
+                                e.printStackTrace();
+                            }
 //                        add_value_to_target(((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), Integer.parseInt(trans_details[3]), target_row);
-                        break;
+                            break;
 //                    case "add_date_time":
 //                        try {
 //                            Object obj = cls.newInstance();
@@ -167,15 +161,16 @@ public class ConcreteTransformer implements Transformer{
 ////
 //                        add_value_to_target(((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), Integer.parseInt(trans_details[3]), target_row);
 //                        break;
-                    default:
-                        System.out.println("Not a valid function");
-                        break;
+                        default:
+                            System.out.println("Not a valid function");
+                            break;
+                    }
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
                 }
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
             }
+            target_table.add(target_row);
         }
-        target_table.add(target_row);
     }
 
     public HashMap<String, String> transform_to_json(String source_row) throws IOException {
@@ -231,24 +226,19 @@ public class ConcreteTransformer implements Transformer{
         return dict.get(key);
     }
 
-    public void split_string(Integer korv, HashMap<String, String> rows, String delimiter) {
-        Collection<String> elements;
+    public void split_string(Integer korv, String value, String delimiter) {
         ArrayList<String> arr;
         if(korv == 0){
-            elements = (Collection<String>) rows.keySet();
             arr = string_key;
         }
         else {
-            elements = (Collection<String>) rows.values();
             arr = string_value;
         }
         if(delimiter.equals("none")) {
-            arr.addAll(elements);
+            arr.add(value);
         }
         else{
-            for(String s: elements){
-                arr.addAll(Arrays.asList(s.split(delimiter)));
-            }
+            arr.addAll(Arrays.asList(value.split(delimiter)));
         }
     }
 
