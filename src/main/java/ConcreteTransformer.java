@@ -1,6 +1,8 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.*;
 
 // TODO: Make this class an implementation of ConcreteTransformer
@@ -107,16 +109,70 @@ public class ConcreteTransformer implements Transformer{
         for(int tno = 0; tno < transformations.getSize(); tno++) {
             System.out.println(transformations.getTransformationTypesModule(tno));
             String[] trans_details = transformations.getTransformationTypesModule(tno).split(" ");
-            //TODO: If else statements for methods; give the methods the one and only element of the target_table array
-            if(trans_details[1].equals("split_string")){
-                split_string(((trans_details[0].equals("key"))?0:1), rows, trans_details[2]);
-            }
-            else if(trans_details[1].equals("replace_from_dict")){
-                HashMap<String, String> tmp = null;
-                replace_from_dict(((trans_details[0].equals("key"))?0:1), Integer.parseInt(trans_details[2]), tmp);
-            }
-            else if(trans_details[1].equals("add_value_to_target")){
-                add_value_to_target(((trans_details[0].equals("key"))?0:1), Integer.parseInt(trans_details[2]), Integer.parseInt(trans_details[3]), target_row);
+            try {
+                Class cls = Class.forName("ConcreteTransformer");
+                switch (trans_details[1]) {
+                    case "split_string":
+                        try {
+                            Object obj = cls.newInstance();
+                            Method method = cls.getDeclaredMethod(trans_details[1], Integer.class, HashMap.class, String.class);
+                            method.invoke(obj, ((trans_details[0].equals("key")) ? 0 : 1), rows, trans_details[2]);
+
+                        } catch (SecurityException | NoSuchMethodException e) {
+                            System.out.println(e);
+                        } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
+                            e.printStackTrace();
+                        }
+
+//                        split_string(((trans_details[0].equals("key")) ? 0 : 1), rows, trans_details[2]);
+                        break;
+                    case "replace_from_dict":
+                        try {
+                            Object obj = cls.newInstance();
+                            Method method = cls.getDeclaredMethod(trans_details[1], Integer.class, Integer.class, HashMap.class);
+                            method.invoke(obj, ((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), null);
+
+                        } catch (SecurityException | NoSuchMethodException e) {
+                            System.out.println(e);
+                        } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
+                            e.printStackTrace();
+                        }
+//                        HashMap<String, String> tmp = null;
+//                        replace_from_dict(((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), tmp);
+                        break;
+                    case "add_value_to_target":
+                        try {
+                            Object obj = cls.newInstance();
+                            Method method = cls.getDeclaredMethod(trans_details[1], Integer.class, Integer.class, Integer.class, TargetTable.class);
+                            method.invoke(obj, ((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]),Integer.parseInt(trans_details[3]), target_row);
+
+                        } catch (SecurityException | NoSuchMethodException e) {
+                            System.out.println(e);
+                        } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
+                            e.printStackTrace();
+                        }
+//                        add_value_to_target(((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), Integer.parseInt(trans_details[3]), target_row);
+                        break;
+//                    case "add_date_time":
+//                        try {
+//                            Object obj = cls.newInstance();
+//                            Method method = cls.getDeclaredMethod(trans_details[1], Integer.class, Integer.class, Integer.class, TargetTable.class);
+//                            method.invoke(obj, ((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]),Integer.parseInt(trans_details[3]), target_row);
+//
+//                        } catch (SecurityException | NoSuchMethodException e) {
+//                            System.out.println(e);
+//                        } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
+//                            e.printStackTrace();
+//                        }
+////
+//                        add_value_to_target(((trans_details[0].equals("key")) ? 0 : 1), Integer.parseInt(trans_details[2]), Integer.parseInt(trans_details[3]), target_row);
+//                        break;
+                    default:
+                        System.out.println("Not a valid function");
+                        break;
+                }
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
             }
         }
         target_table.add(target_row);
@@ -124,8 +180,8 @@ public class ConcreteTransformer implements Transformer{
 
     public HashMap<String, String> transform_to_json(String source_row) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        HashMap<String, String> row = mapper.readValue(source_row, HashMap.class);
-        return row;
+        return mapper.readValue(source_row, HashMap.class);
+
     }
 
     public void add_default_date_time(Integer source_table_loc, Integer target_table_loc, SourceTable source_table, TargetTable target_table) {
@@ -187,15 +243,11 @@ public class ConcreteTransformer implements Transformer{
             arr = string_value;
         }
         if(delimiter.equals("none")) {
-            for(String s: elements){
-                arr.add(s);
-            }
+            arr.addAll(elements);
         }
         else{
             for(String s: elements){
-                for(String j: s.split(delimiter)){
-                    arr.add(j);
-                }
+                arr.addAll(Arrays.asList(s.split(delimiter)));
             }
         }
     }

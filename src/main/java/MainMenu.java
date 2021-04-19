@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class MainMenu {
 
@@ -33,27 +34,14 @@ public class MainMenu {
         ConnectionDB connectionDB = new ConnectionDB();
         connectionDB.connectToDB();
 
-//        Extract.set_extract_thread("source.xml",engine, connectionDB);
-        Transform.run_transformation(engine,connectionDB);
+        Extract.set_extract_thread("source.xml",engine, connectionDB);
+        TimeUnit.SECONDS.sleep(20);
+        Extract.stop_extract_thread();
 
-////        String requestURL = "https://free.currconv.com/api/v7/convert?q=USD_INR&compact=ultra&apiKey=c0dbece0e1a955a43e02";
-////        System.out.println(MainMenu.readStringFromURL(requestURL));
-//
-//        String json = "{\"amount\": \"1.0000\", \"base_currency_code\": \"EUR\", \"base_currency_name\": \"Euro\", \"rates\":{ \"GBP\":{ \"currency_name\":\"Pound sterling\", \"rate\": \"0.8541\", \"rate_for_amount\":\"0.8541\" } }, \"status\": \"success\" , \"updated_date\": \"2020-01-20\"  }";
-//        System.out.println(json);
-//
-//        ObjectMapper mapper = new ObjectMapper();
-//
-//            // convert JSON string to Map
-////        Map<String, String> map = mapper.readValue(MainMenu.readStringFromURL(requestURL), Map.class);
-//        Map<String, String> map = mapper.readValue(json, Map.class);
-//
-//            // it works
-//            //Map<String, String> map = mapper.readValue(json, new TypeReference<Map<String, String>>() {});
-//            System.out.println(map);
-//
-////            System.out.println(mapper.readValue(map.get("rates"), HashMap.class));
 
+//        Transform.run_transformation(engine,connectionDB);
+//        TimeUnit.SECONDS.sleep(20);
+//        Transform.stop_transform_schedule();
 
             connectionDB.disconnectFromDB();
 

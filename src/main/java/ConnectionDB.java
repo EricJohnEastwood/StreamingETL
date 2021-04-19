@@ -6,7 +6,7 @@ public class ConnectionDB {
     static final String DB_URL = "jdbc:mysql://localhost:3306/ETL";
 
     static final String USER = "root";
-    static final String PASS = "srihari";
+    static final String PASS = "";
 
     public Connection conn;
     public Statement stmt;

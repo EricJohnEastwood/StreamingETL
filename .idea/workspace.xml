@@ -9,12 +9,16 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/ConcreteTransformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ConcreteTransformer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ConnectionDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Extract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Extract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GenInstructionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GenInstructionDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Transform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/source.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/source.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/target.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/target.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ConnectionDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ConnectionDB.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/SourceTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SourceTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/TargetTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TargetTable.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Transform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Transform.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/source.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/source.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/target.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/target.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +48,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="ProblemsViewState">
+    <option name="showPreview" value="true" />
+  </component>
   <component name="ProjectId" id="1qKJolkuVgQvPvN2Ntgqga5s1Uc" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -63,6 +70,17 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager" selected="Application.MainMenu">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainMenu" />
       <module name="FinalProject" />
@@ -73,17 +91,6 @@
     <configuration name="Tmp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Tmp" />
       <module name="FinalProject" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

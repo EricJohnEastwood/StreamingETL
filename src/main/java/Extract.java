@@ -100,7 +100,7 @@ public class Extract {
             entry_details[1] = eElement.getElementsByTagName("type").item(0).getTextContent();
             entry_details[2] = eElement.getElementsByTagName("URL").item(0).getTextContent();
             entry_details[3] = date_time;
-            entry_details[0] = entry_details[3];
+            entry_details[0] = Long.toString(System.nanoTime());
 //
 //            if(entry_details[1].equals("csv")){
 //                entry_details[4] = get_URl_csv_data(entry_details[2]);
@@ -151,17 +151,6 @@ public class Extract {
                     Extract.pe_threads.add(pe);
                 }
             }
-
-            TimeUnit.SECONDS.sleep(20);
-
-            System.out.println("Waking up and closing threads");
-//            End all threads
-            for (PeriodicExtract pe_thread : Extract.pe_threads) {
-                pe_thread.cancel();
-            }
-            Extract.timer.cancel();
-            Extract.timer.purge();
-
         }
         catch(Exception e){
             System.out.println(e);
@@ -170,6 +159,7 @@ public class Extract {
     }
 
     public static void stop_extract_thread() {
+        System.out.println("Waking up and closing threads");
         for (PeriodicExtract pe_thread : Extract.pe_threads) {
             pe_thread.cancel();
         }

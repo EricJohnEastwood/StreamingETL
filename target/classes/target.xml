@@ -1,28 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformations xmlns="http://www.ETL.in">
-    <transformationSource>
-        <table>source_data_dump</table>
-        <data_column>Data</data_column>
-    </transformationSource>
-
-    <transformationStep>
-        <type>json</type>
-        <URL>https://api.exchangeratesapi.io/latest</URL>
-        <transformation>DummyTransformation.testingDummy1</transformation>
-        <transformation>DummyTransformation.testingDummy2</transformation>
-        <transformation>DummyTransformation.testingDummy3</transformation>
-        <transformation>DummyTransformation.testingDummy4</transformation>
-    </transformationStep>
-
-    <transformationStep>
-        <type>csv</type>
-        <URL>https://api.exchangeratesapi.io/latest</URL>
-        <transformation>DummyTransformation.testingDummy1</transformation>
-        <transformation>DummyTransformation.testingDummy2</transformation>
-        <transformation>DummyTransformation.testingDummy3</transformation>
-        <transformation>DummyTransformation.testingDummy4</transformation>
-    </transformationStep>
-
     <transformationTarget>
         <table>foreign_exchange</table>
         <column>Currency_Format</column>

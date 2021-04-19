@@ -259,26 +259,5 @@ public class Transform {
             String insert_command = GenInstructionDB.insert_instruction(target_name, tmp1, tmp);
             connectionDB.insertIntoTable(insert_command);
         }
-//        try {
-//                for (int i = 0; i < transformation_to_run.getSize(); i++) {
-//                    class_method_str = transformation_to_run.getTransformationTypesModule(i).split("\\.");
-//                    Class cls = Class.forName(class_method_str[0]);
-//                    Object obj = cls.newInstance();
-//                    Method method = cls.getDeclaredMethod(class_method_str[1], String.class);
-//                    method.invoke(obj, table_for_transform.getData());
-//
-//                }
-//            } catch (ArrayIndexOutOfBoundsException | ClassNotFoundException | NoSuchMethodException e) {
-//                System.out.println("Testing failed");
-//                return;
-//
-//            } catch (IllegalAccessException e) {
-//            e.printStackTrace();
-//        } catch (InstantiationException e) {
-//            e.printStackTrace();
-//        } catch (InvocationTargetException e) {
-//            e.printStackTrace();
-//        }
-
     }
 }
