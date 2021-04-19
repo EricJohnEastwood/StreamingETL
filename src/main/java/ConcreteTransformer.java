@@ -196,11 +196,6 @@ public class ConcreteTransformer implements Transformer{
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
-                System.out.println("Phuckkk");
-                System.out.println(rows);
-                System.out.println(string_key);
-                System.out.println(string_value);
-                System.out.println(target_row);
             }
             target_table.add(target_row);
         }
