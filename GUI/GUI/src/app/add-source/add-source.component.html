@@ -1,0 +1,21 @@
+<div class="col-md-6">
+    <h2 class="text-center">Add Source</h2>
+    <form>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="name" [(ngModel)]="source.name" placeholder="Name" name="name" class="form-control" id="name">
+      </div>
+    
+      <div class="form-group">
+        <label for="type">Type:</label>
+        <input [(ngModel)]="source.type" placeholder="Type" name="type" class="form-control" id="type">
+      </div>
+    
+      <div class="form-group">
+        <label for="URL">URL</label>
+        <input [(ngModel)]="source.url" placeholder="URL" name="url" class="form-control" id="url">
+      </div>
+    
+      <button class="btn btn-success" (click)="addSource()">Add</button>
+    </form>
+    </div>

@@ -1,0 +1,19 @@
+<div class="col-md-6">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>type</th>
+                <th>URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of etl">
+                <td>{{e.name}}</td>
+                <td>{{e.type}}</td>
+                <td>{{e.url}}</td>
+                <td><button class="btn btn-danger" (click)="deleteSource(e)"> Delete Source</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
